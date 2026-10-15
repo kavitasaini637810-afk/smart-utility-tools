@@ -1,13 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EMI Loan Calculator - Monthly Installments & Interest Breakdown</title>
+  <title>EMI Loan Calculator - Reducing Balance &amp; Amortization | Smart Utility Tools</title>
   <meta name="description" content="Calculate monthly EMI, total interest, and total payment for home, car, and personal loans using standard reducing-balance formula with amortization schedules.">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="../assets/css/style.css">
-</head>
+<link rel="canonical" href="https://kavitasaini637810-afk.github.io/smart-utility-tools/tools/emi-calculator.html"><meta property="og:type" content="website"><meta property="og:title" content="EMI Loan Calculator - Reducing Balance &amp; Amortization | Smart Utility Tools"><meta property="og:description" content="Calculate monthly EMI, total interest, and total payment for home, car, and personal loans using standard reducing-balance formula with amortization schedules."><meta property="og:url" content="https://kavitasaini637810-afk.github.io/smart-utility-tools/tools/emi-calculator.html"><meta property="og:site_name" content="Smart Utility Tools"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "EMI Loan Calculator",
+  "url": "https://kavitasaini637810-afk.github.io/smart-utility-tools/tools/emi-calculator.html",
+  "description": "Calculate monthly EMI, total interest, and total payment for home, car, and personal loans using standard reducing-balance formula with amortization schedules.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between flat interest and reducing balance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a flat interest loan, interest is calculated on the full initial loan amount throughout the tenure. In reducing balance loans, interest is calculated each month only on the remaining unpaid principal, which significantly lowers your total interest burden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does making prepayments change my EMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Prepaying principal reduces your overall outstanding loan balance, allowing you either to shorten your loan tenure or request your lender to lower your future monthly EMI payments."
+      }
+    }
+  ]
+}</script></head>
 <body>
 
   <!-- Site Header -->
@@ -70,13 +103,13 @@
           <div class="form-row">
             <div class="form-group">
               <label for="principal" class="form-label">Loan Principal Amount ($): <span class="required">*</span></label>
-              <input type="number" id="principal" class="form-control" min="100" step="any" placeholder="e.g. 50000" required>
+              <input type="number" id="principal" class="form-control" min="100" step="any" placeholder="e.g. 50000" required="">
               <span class="form-hint">Total borrowed sum</span>
             </div>
 
             <div class="form-group">
               <label for="rate" class="form-label">Annual Interest Rate (%): <span class="required">*</span></label>
-              <input type="number" id="rate" class="form-control" min="0" max="100" step="0.01" placeholder="e.g. 8.5" required>
+              <input type="number" id="rate" class="form-control" min="0" max="100" step="0.01" placeholder="e.g. 8.5" required="">
               <span class="form-hint">Annual percentage rate (APR)</span>
             </div>
           </div>
@@ -84,13 +117,13 @@
           <div class="form-row" style="margin-top: 1rem;">
             <div class="form-group">
               <label for="tenure" class="form-label">Loan Tenure Duration: <span class="required">*</span></label>
-              <input type="number" id="tenure" class="form-control" min="1" max="600" step="1" placeholder="e.g. 5" required>
+              <input type="number" id="tenure" class="form-control" min="1" max="600" step="1" placeholder="e.g. 5" required="">
             </div>
 
             <div class="form-group">
               <label for="tenureType" class="form-label">Tenure Unit:</label>
               <select id="tenureType" class="form-control">
-                <option value="years" selected>Years</option>
+                <option value="years" selected="">Years</option>
                 <option value="months">Months</option>
               </select>
             </div>
@@ -258,12 +291,12 @@
         </div>
 
         <div>
-          <h3 class="footer-heading">Company & Legal</h3>
+          <h3 class="footer-heading">Company &amp; Legal</h3>
           <ul class="footer-links">
             <li><a href="../pages/about.html">About Us</a></li>
             <li><a href="../pages/contact.html">Contact Us</a></li>
             <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="../pages/terms.html">Terms & Conditions</a></li>
+            <li><a href="../pages/terms.html">Terms &amp; Conditions</a></li>
             <li><a href="../pages/disclaimer.html">Disclaimer</a></li>
           </ul>
         </div>
@@ -278,6 +311,7 @@
 
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/tools/emi-calculator.js"></script>
-</body>
-</html>
 
+
+
+</body></html>

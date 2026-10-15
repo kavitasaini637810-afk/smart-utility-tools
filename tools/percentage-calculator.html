@@ -1,13 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Percentage Calculator - Free Multi-Mode Percent Tools</title>
+  <title>Percentage Calculator - 4 Calculation Modes | Smart Utility Tools</title>
   <meta name="description" content="Calculate X% of Y, find percentage values, percentage increase, and percentage decrease with step-by-step mathematical formulas. Free and instant.">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="../assets/css/style.css">
-</head>
+<link rel="canonical" href="https://kavitasaini637810-afk.github.io/smart-utility-tools/tools/percentage-calculator.html"><meta property="og:type" content="website"><meta property="og:title" content="Percentage Calculator - 4 Calculation Modes | Smart Utility Tools"><meta property="og:description" content="Calculate X% of Y, find percentage values, percentage increase, and percentage decrease with step-by-step mathematical formulas. Free and instant."><meta property="og:url" content="https://kavitasaini637810-afk.github.io/smart-utility-tools/tools/percentage-calculator.html"><meta property="og:site_name" content="Smart Utility Tools"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Percentage Calculator",
+  "url": "https://kavitasaini637810-afk.github.io/smart-utility-tools/tools/percentage-calculator.html",
+  "description": "Calculate X% of Y, find percentage values, percentage increase, and percentage decrease with step-by-step mathematical formulas. Free and instant.",
+  "applicationCategory": "CalculatorApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I enter decimals and negative numbers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculator accepts all valid floating point numbers and decimals (e.g. 7.5%, 1240.50)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I divide by zero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In mathematics, division by zero is undefined. Our tool proactively detects zero denominators and displays a clear explanation instead of returning NaN or crashing."
+      }
+    }
+  ]
+}</script></head>
 <body>
 
   <!-- Site Header -->
@@ -68,11 +101,11 @@
           <div class="form-row">
             <div class="form-group">
               <label for="p1_x" class="form-label">Percentage (X %):</label>
-              <input type="number" id="p1_x" class="form-control" step="any" placeholder="e.g. 15" required>
+              <input type="number" id="p1_x" class="form-control" step="any" placeholder="e.g. 15" required="">
             </div>
             <div class="form-group">
               <label for="p1_y" class="form-label">Of Value (Y):</label>
-              <input type="number" id="p1_y" class="form-control" step="any" placeholder="e.g. 240" required>
+              <input type="number" id="p1_y" class="form-control" step="any" placeholder="e.g. 240" required="">
             </div>
           </div>
           <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">Calculate Value</button>
@@ -87,11 +120,11 @@
           <div class="form-row">
             <div class="form-group">
               <label for="p2_x" class="form-label">Value (X):</label>
-              <input type="number" id="p2_x" class="form-control" step="any" placeholder="e.g. 45" required>
+              <input type="number" id="p2_x" class="form-control" step="any" placeholder="e.g. 45" required="">
             </div>
             <div class="form-group">
               <label for="p2_y" class="form-label">Out of Total (Y):</label>
-              <input type="number" id="p2_y" class="form-control" step="any" placeholder="e.g. 180" required>
+              <input type="number" id="p2_y" class="form-control" step="any" placeholder="e.g. 180" required="">
             </div>
           </div>
           <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">Calculate Percentage</button>
@@ -106,11 +139,11 @@
           <div class="form-row">
             <div class="form-group">
               <label for="p3_x" class="form-label">Initial Value (X):</label>
-              <input type="number" id="p3_x" class="form-control" step="any" placeholder="e.g. 50" required>
+              <input type="number" id="p3_x" class="form-control" step="any" placeholder="e.g. 50" required="">
             </div>
             <div class="form-group">
               <label for="p3_y" class="form-label">Final Value (Y):</label>
-              <input type="number" id="p3_y" class="form-control" step="any" placeholder="e.g. 75" required>
+              <input type="number" id="p3_y" class="form-control" step="any" placeholder="e.g. 75" required="">
             </div>
           </div>
           <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">Calculate Increase</button>
@@ -125,11 +158,11 @@
           <div class="form-row">
             <div class="form-group">
               <label for="p4_x" class="form-label">Original Value (X):</label>
-              <input type="number" id="p4_x" class="form-control" step="any" placeholder="e.g. 100" required>
+              <input type="number" id="p4_x" class="form-control" step="any" placeholder="e.g. 100" required="">
             </div>
             <div class="form-group">
               <label for="p4_y" class="form-label">Discounted Value (Y):</label>
-              <input type="number" id="p4_y" class="form-control" step="any" placeholder="e.g. 80" required>
+              <input type="number" id="p4_y" class="form-control" step="any" placeholder="e.g. 80" required="">
             </div>
           </div>
           <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">Calculate Decrease</button>
@@ -244,12 +277,12 @@
         </div>
 
         <div>
-          <h3 class="footer-heading">Company & Legal</h3>
+          <h3 class="footer-heading">Company &amp; Legal</h3>
           <ul class="footer-links">
             <li><a href="../pages/about.html">About Us</a></li>
             <li><a href="../pages/contact.html">Contact Us</a></li>
             <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="../pages/terms.html">Terms & Conditions</a></li>
+            <li><a href="../pages/terms.html">Terms &amp; Conditions</a></li>
             <li><a href="../pages/disclaimer.html">Disclaimer</a></li>
           </ul>
         </div>
@@ -264,6 +297,7 @@
 
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/tools/percentage-calculator.js"></script>
-</body>
-</html>
 
+
+
+</body></html>

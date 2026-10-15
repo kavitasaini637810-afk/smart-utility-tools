@@ -100,3 +100,51 @@ test('Site Verification - Link Integrity and Asset Paths', () => {
   });
 });
 
+test('SEO Verification - Canonicals, OG Tags, JSON-LD, and H1 Structure', () => {
+  EXPECTED_HTML_FILES.forEach(htmlFile => {
+    const fullPath = path.join(PROJECT_ROOT, htmlFile);
+    const htmlContent = fs.readFileSync(fullPath, 'utf-8');
+    const dom = new JSDOM(htmlContent);
+    const doc = dom.window.document;
+
+    // Heading hierarchy: Exactly one h1 per page
+    const h1s = doc.querySelectorAll('h1');
+    assert.strictEqual(h1s.length, 1, `${htmlFile} must have exactly one <h1>, found ${h1s.length}`);
+
+    // Skip 404 from indexing checks
+    if (htmlFile === '404.html') {
+      const robotsMeta = doc.querySelector('meta[name="robots"]');
+      assert.ok(robotsMeta && robotsMeta.getAttribute('content').includes('noindex'), '404.html must have noindex robots');
+      return;
+    }
+
+    // Canonical Tag
+    const canonical = doc.querySelector('link[rel="canonical"]');
+    assert.ok(canonical, `${htmlFile} must have a canonical tag`);
+    const canonicalHref = canonical.getAttribute('href');
+    assert.ok(
+      canonicalHref.startsWith('https://kavitasaini637810-afk.github.io/smart-utility-tools/'),
+      `${htmlFile} canonical must point to published site URL, got: ${canonicalHref}`
+    );
+
+    // Open Graph Tags
+    const ogTitle = doc.querySelector('meta[property="og:title"]');
+    const ogDesc = doc.querySelector('meta[property="og:description"]');
+    const ogUrl = doc.querySelector('meta[property="og:url"]');
+    assert.ok(ogTitle && ogTitle.getAttribute('content'), `${htmlFile} must have og:title`);
+    assert.ok(ogDesc && ogDesc.getAttribute('content'), `${htmlFile} must have og:description`);
+    assert.ok(ogUrl && ogUrl.getAttribute('content'), `${htmlFile} must have og:url`);
+
+    // Structured Data (JSON-LD)
+    const jsonLdScripts = doc.querySelectorAll('script[type="application/ld+json"]');
+    assert.ok(jsonLdScripts.length >= 1, `${htmlFile} must have at least one JSON-LD structured data block`);
+    jsonLdScripts.forEach((s, idx) => {
+      assert.doesNotThrow(() => {
+        const parsed = JSON.parse(s.textContent);
+        assert.ok(parsed['@context'] === 'https://schema.org', 'Schema @context must be https://schema.org');
+        assert.ok(parsed['@type'], 'Schema @type must exist');
+      }, `${htmlFile} JSON-LD block #${idx + 1} must be valid JSON`);
+    });
+  });
+});
+
