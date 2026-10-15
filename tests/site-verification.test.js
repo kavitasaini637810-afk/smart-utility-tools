@@ -40,15 +40,43 @@ test('Site Structure - all required HTML files exist', () => {
   });
 });
 
-test('Site Structure - sitemap.xml and robots.txt exist', () => {
+test('Site Structure - sitemap.xml and robots.txt exist and are strictly valid', () => {
   const robots = path.join(PROJECT_ROOT, 'robots.txt');
   const sitemap = path.join(PROJECT_ROOT, 'sitemap.xml');
   assert.ok(fs.existsSync(robots), 'robots.txt must exist');
   assert.ok(fs.existsSync(sitemap), 'sitemap.xml must exist');
 
   const sitemapContent = fs.readFileSync(sitemap, 'utf-8');
-  assert.match(sitemapContent, /<urlset/);
-  assert.match(sitemapContent, /word-counter\.html/);
+  assert.match(sitemapContent, /<\?xml version="1\.0" encoding="UTF-8"\?>/);
+  assert.match(sitemapContent, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+
+  // Strict XML DOM Parsing
+  const dom = new JSDOM(sitemapContent, { contentType: 'application/xml' });
+  const parserErrors = dom.window.document.querySelectorAll('parsererror');
+  assert.strictEqual(parserErrors.length, 0, 'sitemap.xml must have 0 XML parser errors');
+
+  const urls = Array.from(dom.window.document.querySelectorAll('url'));
+  assert.strictEqual(urls.length, 21, 'sitemap.xml must contain exactly 21 URLs');
+
+  // Verify homepage canonical alignment
+  const homepageLoc = urls[0].querySelector('loc').textContent.trim();
+  assert.strictEqual(homepageLoc, 'https://kavitasaini637810-afk.github.io/smart-utility-tools/', 'Homepage loc in sitemap must match canonical URL exactly');
+
+  // Verify all URLs exist and use correct base
+  const seenLocs = new Set();
+  urls.forEach(u => {
+    const loc = u.querySelector('loc').textContent.trim();
+    assert.ok(loc.startsWith('https://kavitasaini637810-afk.github.io/smart-utility-tools/'), `Invalid domain in loc: ${loc}`);
+    assert.ok(!seenLocs.has(loc), `Duplicate loc in sitemap: ${loc}`);
+    seenLocs.add(loc);
+
+    const lastmod = u.querySelector('lastmod').textContent.trim();
+    assert.match(lastmod, /^\d{4}-\d{2}-\d{2}$/, `Invalid lastmod date format: ${lastmod}`);
+  });
+
+  // Verify robots.txt sitemap reference
+  const robotsContent = fs.readFileSync(robots, 'utf-8');
+  assert.match(robotsContent, /Sitemap: https:\/\/kavitasaini637810-afk\.github\.io\/smart-utility-tools\/sitemap\.xml/);
 });
 
 test('Site Verification - Link Integrity and Asset Paths', () => {
