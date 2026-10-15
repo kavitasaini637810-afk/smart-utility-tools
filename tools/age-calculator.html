@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator - Exact Chronological Age & Birthday Countdown</title>
+  <meta name="description" content="Calculate your exact age in years, months, days, weeks, and hours. Includes accurate leap-year handling and countdown to your next birthday.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <span class="brand-icon">S</span>
+        <span>Smart Utility Tools</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../pages/all-tools.html" class="nav-link">All Tools</a></li>
+          <li><a href="../pages/pdf-tools.html" class="nav-link">PDF Tools</a></li>
+          <li><a href="../pages/image-tools.html" class="nav-link">Image Tools</a></li>
+          <li><a href="../pages/calculator-tools.html" class="nav-link active">Calculators</a></li>
+          <li><a href="../pages/text-tools.html" class="nav-link">Text Tools</a></li>
+          <li><a href="../pages/about.html" class="nav-link">About</a></li>
+          <li><a href="../pages/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container tool-page-container">
+
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li><a href="../pages/calculator-tools.html">Calculators</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li aria-current="page">Age Calculator</li>
+        </ol>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header-block">
+        <span class="badge badge-primary tool-header-badge">Calendar Calculator</span>
+        <h1 class="tool-page-title">Age Calculator</h1>
+        <p class="tool-page-subtitle">Determine your exact chronological age in years, months, and days with calendar precision, leap-year compensation, and birthday countdowns.</p>
+      </div>
+
+      <!-- Tool Panel -->
+      <div class="tool-panel">
+        
+        <div id="ageError" class="alert alert-danger" style="display: none;" role="alert"></div>
+
+        <form id="ageForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dob" class="form-label">Date of Birth: <span class="required">*</span></label>
+              <input type="date" id="dob" class="form-control" required>
+              <span class="form-hint">Enter the day you were born</span>
+            </div>
+
+            <div class="form-group">
+              <label for="targetDate" class="form-label">Calculate Age At Date:</label>
+              <input type="date" id="targetDate" class="form-control">
+              <span class="form-hint">Defaults to today's date</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Calculate Exact Age</button>
+        </form>
+
+        <!-- Result Box -->
+        <div id="ageResult" class="result-card" style="display: none;" aria-live="polite">
+          <div class="result-title">
+            <span>🎉 Your Exact Age:</span>
+            <span class="badge badge-success" id="resNextBday"></span>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value" id="resYears">0</div>
+              <div class="stat-label">Years</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="resMonths">0</div>
+              <div class="stat-label">Months</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="resDays">0</div>
+              <div class="stat-label">Days</div>
+            </div>
+          </div>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+          <h3 style="font-size: 0.9375rem; margin-bottom: 0.75rem; color: var(--text-secondary);">Total Lifetime Metrics:</h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value" style="font-size: 1.125rem;" id="resTotalMonths">0</div>
+              <div class="stat-label">Total Months</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" style="font-size: 1.125rem;" id="resTotalWeeks">0</div>
+              <div class="stat-label">Total Weeks</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" style="font-size: 1.125rem;" id="resTotalDays">0</div>
+              <div class="stat-label">Total Days</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" style="font-size: 1.125rem;" id="resTotalHours">0</div>
+              <div class="stat-label">Total Hours</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Instructions & Documentation -->
+      <section class="tool-documentation">
+        <div class="doc-section">
+          <h2 class="doc-title"><span>📖</span> How Chronological Age is Calculated</h2>
+          <div class="doc-content">
+            <p>Unlike basic day-counting approximations that divide total days by 365, our age calculator calculates exact calendar intervals:</p>
+            <ul>
+              <li><strong>Calendar Month Borrowing:</strong> If target day is earlier than the birth day, days are borrowed from the previous calendar month using the exact number of days in that specific month (28, 29, 30, or 31).</li>
+              <li><strong>Leap-Year Awareness:</strong> Februaries in leap years (such as 2000, 2024, 2028) are counted as 29 days.</li>
+              <li><strong>Timezone Normalization:</strong> Dates are parsed in your device's local timezone so day shift bugs do not alter your birthday.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>💡</span> Practical Example</h3>
+          <div class="example-box">
+            <strong>Birth Date:</strong> January 15, 2000<br>
+            <strong>Target Date:</strong> October 15, 2026<br>
+            <strong>Result:</strong> Exactly 26 Years, 9 Months, and 0 Days (9,770 total days lived).
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What happens if someone was born on February 29th?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Our algorithm accurately accounts for leaplings. In non-leap years, next birthday countdowns evaluate to February 28th, and in leap years they evaluate to February 29th.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Can I calculate age for historical dates or future milestones?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes! Simply adjust the "Calculate Age At Date" field to any date on or after your birth date to see how old you were or will be on that date.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3 class="doc-title">Related Utilities</h3>
+          <div class="related-grid">
+            <a href="percentage-calculator.html" class="related-card">
+              <div class="related-card-title">Percentage Calculator</div>
+              <div class="related-card-cat">Calculators</div>
+            </a>
+            <a href="emi-calculator.html" class="related-card">
+              <div class="related-card-title">EMI Loan Calculator</div>
+              <div class="related-card-cat">Financial</div>
+            </a>
+            <a href="word-counter.html" class="related-card">
+              <div class="related-card-title">Word Counter</div>
+              <div class="related-card-cat">Text Tools</div>
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="brand-link">
+            <span class="brand-icon">S</span>
+            <span>Smart Utility Tools</span>
+          </a>
+          <p class="footer-brand-desc">
+            Free, fast, and privacy-conscious online utilities for calculations, text analysis, image optimization, and PDF processing.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/pdf-tools.html">PDF Tools</a></li>
+            <li><a href="../pages/image-tools.html">Image Tools</a></li>
+            <li><a href="../pages/calculator-tools.html">Calculators</a></li>
+            <li><a href="../pages/text-tools.html">Text Utilities</a></li>
+            <li><a href="../pages/all-tools.html">All 10 Tools</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Popular Tools</h3>
+          <ul class="footer-links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="image-resizer.html">Image Resizer</a></li>
+            <li><a href="pdf-merger.html">PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Company & Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/about.html">About Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html">Terms & Conditions</a></li>
+            <li><a href="../pages/disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Smart Utility Tools. All rights reserved. Free client-side web utilities.</div>
+        <div>Processed locally on your device for complete privacy.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/tools/age-calculator.js"></script>
+</body>
+</html>

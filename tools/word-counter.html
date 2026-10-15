@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word and Character Counter - Free Online Text Utility</title>
+  <meta name="description" content="Count words, characters (with and without spaces), sentences, paragraphs, and reading time in real-time. Unicode-supported, free, and private.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <span class="brand-icon">S</span>
+        <span>Smart Utility Tools</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../pages/all-tools.html" class="nav-link">All Tools</a></li>
+          <li><a href="../pages/pdf-tools.html" class="nav-link">PDF Tools</a></li>
+          <li><a href="../pages/image-tools.html" class="nav-link">Image Tools</a></li>
+          <li><a href="../pages/calculator-tools.html" class="nav-link">Calculators</a></li>
+          <li><a href="../pages/text-tools.html" class="nav-link active">Text Tools</a></li>
+          <li><a href="../pages/about.html" class="nav-link">About</a></li>
+          <li><a href="../pages/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container tool-page-container">
+
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li><a href="../pages/text-tools.html">Text Tools</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li aria-current="page">Word Counter</li>
+        </ol>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header-block">
+        <span class="badge badge-primary tool-header-badge">Text Utility</span>
+        <h1 class="tool-page-title">Word and Character Counter</h1>
+        <p class="tool-page-subtitle">Analyze your text in real time. Get instant metrics on word count, character count, sentence length, and reading duration with full Unicode support.</p>
+      </div>
+
+      <!-- Tool Panel -->
+      <div class="tool-panel">
+        
+        <div class="stats-grid" style="margin-bottom: 1.5rem;" aria-live="polite">
+          <div class="stat-item">
+            <div class="stat-value" id="wordCount">0</div>
+            <div class="stat-label">Words</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="charWithSpaces">0</div>
+            <div class="stat-label">Characters (All)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="charNoSpaces">0</div>
+            <div class="stat-label">Chars (No Space)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="sentenceCount">0</div>
+            <div class="stat-label">Sentences</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="paragraphCount">0</div>
+            <div class="stat-label">Paragraphs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="readingTime">0 sec</div>
+            <div class="stat-label">Reading Time</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="textInput" class="form-label">Type or Paste Your Text Here:</label>
+          <textarea id="textInput" class="form-control" rows="8" placeholder="Start typing or paste your essay, article, email, or blog post here..."></textarea>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" id="copyBtn" class="btn btn-secondary">📋 Copy Text</button>
+          <button type="button" id="clearBtn" class="btn btn-secondary">🗑️ Clear Text</button>
+        </div>
+
+      </div>
+
+      <!-- Tool Instructions & Guide -->
+      <section class="tool-documentation">
+        <div class="doc-section">
+          <h2 class="doc-title"><span>📖</span> How to Use the Word Counter</h2>
+          <div class="doc-content">
+            <ol>
+              <li><strong>Type or Paste:</strong> Paste your written content directly into the text area above or start typing immediately.</li>
+              <li><strong>Live Computation:</strong> The statistics grid updates instantaneously with every keystroke.</li>
+              <li><strong>Unicode Support:</strong> Emojis, accented foreign characters, and multibyte symbols are accurately handled.</li>
+              <li><strong>Reading Time:</strong> Estimated based on standard average reading speeds of 200 words per minute.</li>
+              <li><strong>Action Buttons:</strong> Click <em>Copy Text</em> to quickly grab your updated text or <em>Clear Text</em> to reset the editor.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>💡</span> Practical Example</h3>
+          <div class="example-box">
+            <strong>Input Text:</strong> <em>"The quick brown fox jumps over the lazy dog. It was a sunny morning!"</em><br>
+            <strong>Live Output:</strong> 14 Words • 67 Characters (with spaces) • 54 Characters (without spaces) • 2 Sentences • 1 Paragraph • 5 sec Reading Time.
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Is my text saved or sent to any server?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                No. All text parsing happens directly inside your web browser. No text is saved, transmitted, or logged.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How is reading time calculated?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Reading time is estimated using the scientifically accepted standard reading speed of 200 words per minute for adult English readers.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Does this counter support languages other than English?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes. Our Unicode text iterator supports Spanish, Hindi, French, German, Arabic, Chinese, emojis, and astral character sets.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3 class="doc-title">Related Utilities</h3>
+          <div class="related-grid">
+            <a href="percentage-calculator.html" class="related-card">
+              <div class="related-card-title">Percentage Calculator</div>
+              <div class="related-card-cat">Calculators</div>
+            </a>
+            <a href="image-resizer.html" class="related-card">
+              <div class="related-card-title">Image Resizer</div>
+              <div class="related-card-cat">Image Tools</div>
+            </a>
+            <a href="pdf-merger.html" class="related-card">
+              <div class="related-card-title">PDF Merger</div>
+              <div class="related-card-cat">PDF Tools</div>
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="brand-link">
+            <span class="brand-icon">S</span>
+            <span>Smart Utility Tools</span>
+          </a>
+          <p class="footer-brand-desc">
+            Free, fast, and privacy-conscious online utilities for calculations, text analysis, image optimization, and PDF processing.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/pdf-tools.html">PDF Tools</a></li>
+            <li><a href="../pages/image-tools.html">Image Tools</a></li>
+            <li><a href="../pages/calculator-tools.html">Calculators</a></li>
+            <li><a href="../pages/text-tools.html">Text Utilities</a></li>
+            <li><a href="../pages/all-tools.html">All 10 Tools</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Popular Tools</h3>
+          <ul class="footer-links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="image-resizer.html">Image Resizer</a></li>
+            <li><a href="pdf-merger.html">PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Company & Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/about.html">About Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html">Terms & Conditions</a></li>
+            <li><a href="../pages/disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Smart Utility Tools. All rights reserved. Free client-side web utilities.</div>
+        <div>Processed locally on your device for complete privacy.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/tools/word-counter.js"></script>
+</body>
+</html>

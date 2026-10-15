@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Smart Utility Tools</title>
+  <meta name="description" content="Get in touch with the Smart Utility Tools team for feedback, bug reports, feature requests, or technical inquiries.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <span class="brand-icon">S</span>
+        <span>Smart Utility Tools</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="all-tools.html" class="nav-link">All Tools</a></li>
+          <li><a href="pdf-tools.html" class="nav-link">PDF Tools</a></li>
+          <li><a href="image-tools.html" class="nav-link">Image Tools</a></li>
+          <li><a href="calculator-tools.html" class="nav-link">Calculators</a></li>
+          <li><a href="text-tools.html" class="nav-link">Text Tools</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li aria-current="page">Contact Us</li>
+        </ol>
+      </nav>
+
+      <div class="content-page">
+        <h1>Contact Us</h1>
+        <div class="page-meta">We value your questions, tool suggestions, and feedback.</div>
+
+        <p>
+          Have a suggestion for a new utility? Encountered an issue with an existing tool? We are dedicated to maintaining high-quality, privacy-first web utilities. Please send us your message using the form below or through our designated support channel.
+        </p>
+
+        <!-- Configuration Notice for Site Administrators -->
+        <div class="alert alert-info" style="font-size: 0.8125rem;">
+          <strong>Site Administrator Note:</strong> To receive form inquiries directly in your inbox, configure your preferred endpoint (such as Formspree, Formkeep, or a mailto link) in this page or replace the default contact address: <code>contact@example.com</code>.
+        </div>
+
+        <div id="contactSuccess" class="alert alert-success" style="display: none;" role="status">
+          <strong>Thank you!</strong> Your message has been prepared. If you configured a mail client, your inquiry will open shortly.
+        </div>
+
+        <div id="contactError" class="alert alert-danger" style="display: none;" role="alert">
+          Please correct the errors highlighted below before submitting.
+        </div>
+
+        <form id="contactForm" novalidate style="margin-top: 1.5rem;">
+          <div class="form-group">
+            <label for="contactName" class="form-label">Your Name <span class="required">*</span></label>
+            <input type="text" id="contactName" class="form-control" placeholder="Jane Doe" required>
+            <span class="form-error" id="nameError" style="display: none;">Please provide your name.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="contactEmail" class="form-label">Email Address <span class="required">*</span></label>
+            <input type="email" id="contactEmail" class="form-control" placeholder="jane@example.com" required>
+            <span class="form-error" id="emailError" style="display: none;">Please provide a valid email address.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="contactSubject" class="form-label">Subject <span class="required">*</span></label>
+            <input type="text" id="contactSubject" class="form-control" placeholder="Tool suggestion / Bug report" required>
+            <span class="form-error" id="subjectError" style="display: none;">Please enter a subject.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage" class="form-label">Message <span class="required">*</span></label>
+            <textarea id="contactMessage" class="form-control" rows="5" placeholder="Describe your question or feedback in detail..." required></textarea>
+            <span class="form-error" id="messageError" style="display: none;">Please enter your message (minimum 10 characters).</span>
+          </div>
+
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="reset" class="btn btn-secondary">Clear Form</button>
+          </div>
+        </form>
+
+        <hr style="margin: 2.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+        <h2>Direct Contact Information</h2>
+        <p>
+          You can also reach out directly via email at:<br>
+          <a href="mailto:contact@example.com"><strong>contact@example.com</strong></a> <em>(Replace with your verified operational email address)</em>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="brand-link">
+            <span class="brand-icon">S</span>
+            <span>Smart Utility Tools</span>
+          </a>
+          <p class="footer-brand-desc">
+            Free, fast, and privacy-conscious online utilities for calculations, text analysis, image optimization, and PDF processing.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="pdf-tools.html">PDF Tools</a></li>
+            <li><a href="image-tools.html">Image Tools</a></li>
+            <li><a href="calculator-tools.html">Calculators</a></li>
+            <li><a href="text-tools.html">Text Utilities</a></li>
+            <li><a href="all-tools.html">All 10 Tools</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Popular Tools</h3>
+          <ul class="footer-links">
+            <li><a href="../tools/word-counter.html">Word Counter</a></li>
+            <li><a href="../tools/emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="../tools/image-resizer.html">Image Resizer</a></li>
+            <li><a href="../tools/pdf-merger.html">PDF Merger</a></li>
+            <li><a href="../tools/pdf-splitter.html">PDF Splitter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Company & Legal</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Smart Utility Tools. All rights reserved. Free client-side web utilities.</div>
+        <div>Processed locally on your device for complete privacy.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Form Validation Script
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById('contactForm');
+      var nameEl = document.getElementById('contactName');
+      var emailEl = document.getElementById('contactEmail');
+      var subjEl = document.getElementById('contactSubject');
+      var msgEl = document.getElementById('contactMessage');
+      var successEl = document.getElementById('contactSuccess');
+      var errorEl = document.getElementById('contactError');
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var isValid = true;
+
+        // Reset state
+        [nameEl, emailEl, subjEl, msgEl].forEach(function (el) {
+          el.removeAttribute('aria-invalid');
+        });
+        document.querySelectorAll('.form-error').forEach(function (el) {
+          el.style.display = 'none';
+        });
+        successEl.style.display = 'none';
+        errorEl.style.display = 'none';
+
+        if (!nameEl.value.trim()) {
+          document.getElementById('nameError').style.display = 'block';
+          nameEl.setAttribute('aria-invalid', 'true');
+          isValid = false;
+        }
+
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailEl.value.trim())) {
+          document.getElementById('emailError').style.display = 'block';
+          emailEl.setAttribute('aria-invalid', 'true');
+          isValid = false;
+        }
+
+        if (!subjEl.value.trim()) {
+          document.getElementById('subjectError').style.display = 'block';
+          subjEl.setAttribute('aria-invalid', 'true');
+          isValid = false;
+        }
+
+        if (!msgEl.value.trim() || msgEl.value.trim().length < 10) {
+          document.getElementById('messageError').style.display = 'block';
+          msgEl.setAttribute('aria-invalid', 'true');
+          isValid = false;
+        }
+
+        if (!isValid) {
+          errorEl.style.display = 'block';
+          return;
+        }
+
+        // Prepare mailto fallback or success message
+        var mailtoUrl = 'mailto:contact@example.com?subject=' + encodeURIComponent(subjEl.value.trim()) + '&body=' + encodeURIComponent('From: ' + nameEl.value.trim() + ' (' + emailEl.value.trim() + ')\n\n' + msgEl.value.trim());
+        
+        successEl.style.display = 'block';
+        form.reset();
+        window.location.href = mailtoUrl;
+      });
+    });
+  </script>
+</body>
+</html>

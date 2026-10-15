@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST Calculator - Inclusive & Exclusive Tax with CGST, SGST, IGST</title>
+  <meta name="description" content="Calculate GST inclusive and exclusive amounts across standard brackets (0%, 5%, 12%, 18%, 28%). View CGST, SGST, and IGST breakdowns instantly.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <span class="brand-icon">S</span>
+        <span>Smart Utility Tools</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../pages/all-tools.html" class="nav-link">All Tools</a></li>
+          <li><a href="../pages/pdf-tools.html" class="nav-link">PDF Tools</a></li>
+          <li><a href="../pages/image-tools.html" class="nav-link">Image Tools</a></li>
+          <li><a href="../pages/calculator-tools.html" class="nav-link active">Calculators</a></li>
+          <li><a href="../pages/text-tools.html" class="nav-link">Text Tools</a></li>
+          <li><a href="../pages/about.html" class="nav-link">About</a></li>
+          <li><a href="../pages/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container tool-page-container">
+
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li><a href="../pages/calculator-tools.html">Calculators</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li aria-current="page">GST Calculator</li>
+        </ol>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header-block">
+        <span class="badge badge-primary tool-header-badge">Financial Calculator</span>
+        <h1 class="tool-page-title">GST Tax Calculator</h1>
+        <p class="tool-page-subtitle">Calculate Goods and Services Tax (GST) for products and services. Determine net amounts, total invoice amounts, and state/central tax splits.</p>
+      </div>
+
+      <!-- Tool Panel -->
+      <div class="tool-panel">
+        
+        <div id="gstError" class="alert alert-danger" style="display: none;" role="alert"></div>
+
+        <form id="gstForm">
+          <div class="form-group">
+            <label for="gstAmount" class="form-label">Initial Amount ($): <span class="required">*</span></label>
+            <input type="number" id="gstAmount" class="form-control" min="0.01" step="any" placeholder="e.g. 5000" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Calculation Mode:</label>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="radio" name="gstMode" value="exclusive" checked>
+                <span><strong>Add GST (Exclusive)</strong> - Tax added on top of base amount</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="radio" name="gstMode" value="inclusive">
+                <span><strong>Remove GST (Inclusive)</strong> - Extract tax from total amount</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 1.25rem;">
+            <label class="form-label">GST Tax Rate Bracket:</label>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+              <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                <input type="radio" name="gstRate" value="0"> 0%
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                <input type="radio" name="gstRate" value="5"> 5%
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                <input type="radio" name="gstRate" value="12"> 12%
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                <input type="radio" name="gstRate" value="18" checked> 18%
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                <input type="radio" name="gstRate" value="28"> 28%
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                <input type="radio" name="gstRate" value="custom"> Custom %:
+              </label>
+              <input type="number" id="customGstRate" class="form-control" style="width: 90px; padding: 0.4rem 0.6rem;" min="0" max="100" step="0.1" placeholder="Rate %" disabled>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Calculate GST</button>
+        </form>
+
+        <!-- Result Card -->
+        <div id="gstResult" class="result-card" style="display: none;" aria-live="polite">
+          <div class="result-title">
+            <span>GST Tax Computation Breakdown</span>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value" id="resNet">$0.00</div>
+              <div class="stat-label">Net (Base) Amount</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="resTax" style="color: #d97706;">$0.00</div>
+              <div class="stat-label">GST Tax Amount</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="resTotalGst" style="color: #16a34a;">$0.00</div>
+              <div class="stat-label">Gross (Total) Amount</div>
+            </div>
+          </div>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+          <h3 style="font-size: 0.9375rem; margin-bottom: 0.75rem;">Jurisdictional Tax Split:</h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value" style="font-size: 1.125rem;" id="resCgst">$0.00</div>
+              <div class="stat-label">CGST (Central Tax 50%)</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" style="font-size: 1.125rem;" id="resSgst">$0.00</div>
+              <div class="stat-label">SGST (State Tax 50%)</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" style="font-size: 1.125rem;" id="resIgst">$0.00</div>
+              <div class="stat-label">IGST (Inter-State 100%)</div>
+            </div>
+          </div>
+
+          <div class="alert alert-info" style="margin-top: 1rem; font-size: 0.8125rem;">
+            <strong>Disclaimer:</strong> This calculation is for estimation purposes only and does not constitute official accounting or tax advice.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Documentation & Examples -->
+      <section class="tool-documentation">
+        <div class="doc-section">
+          <h2 class="doc-title"><span>📖</span> How GST Calculations Work</h2>
+          <div class="doc-content">
+            <p>Goods and Services Tax can be computed in two standard directions:</p>
+            <ul>
+              <li><strong>GST Exclusive (Add GST):</strong> When you have the pre-tax base price:<br>
+                <code>GST Amount = (Base Amount × GST Rate) ÷ 100</code><br>
+                <code>Total Invoice Amount = Base Amount + GST Amount</code>
+              </li>
+              <li><strong>GST Inclusive (Remove GST):</strong> When you have the gross price and need to determine how much was tax:<br>
+                <code>Base Amount = Gross Amount ÷ (1 + (GST Rate ÷ 100))</code><br>
+                <code>GST Amount = Gross Amount - Base Amount</code>
+              </li>
+              <li><strong>Tax Distribution:</strong> For transactions within the same state (Intra-state), tax is split evenly between Central GST (CGST) and State GST (SGST). For interstate transactions, Integrated GST (IGST) applies.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>💡</span> Practical Calculation Example</h3>
+          <div class="example-box">
+            <strong>Exclusive Example:</strong> Item price is $1,000 with 18% GST.<br>
+            • GST Tax = $180 ($90 CGST + $90 SGST)<br>
+            • Total Invoice = $1,180
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>When does IGST apply instead of CGST/SGST?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                IGST (Integrated GST) applies when goods or services are supplied across state borders or imported. CGST and SGST apply when the buyer and supplier reside within the same state.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What items fall under the 0% GST bracket?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Essential food items like fresh milk, grain, vegetables, and unbranded necessities typically fall under the 0% exempt GST slab in most GST jurisdictions.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3 class="doc-title">Related Utilities</h3>
+          <div class="related-grid">
+            <a href="percentage-calculator.html" class="related-card">
+              <div class="related-card-title">Percentage Calculator</div>
+              <div class="related-card-cat">Calculators</div>
+            </a>
+            <a href="emi-calculator.html" class="related-card">
+              <div class="related-card-title">EMI Loan Calculator</div>
+              <div class="related-card-cat">Financial</div>
+            </a>
+            <a href="word-counter.html" class="related-card">
+              <div class="related-card-title">Word Counter</div>
+              <div class="related-card-cat">Text Tools</div>
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="brand-link">
+            <span class="brand-icon">S</span>
+            <span>Smart Utility Tools</span>
+          </a>
+          <p class="footer-brand-desc">
+            Free, fast, and privacy-conscious online utilities for calculations, text analysis, image optimization, and PDF processing.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/pdf-tools.html">PDF Tools</a></li>
+            <li><a href="../pages/image-tools.html">Image Tools</a></li>
+            <li><a href="../pages/calculator-tools.html">Calculators</a></li>
+            <li><a href="../pages/text-tools.html">Text Utilities</a></li>
+            <li><a href="../pages/all-tools.html">All 10 Tools</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Popular Tools</h3>
+          <ul class="footer-links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="image-resizer.html">Image Resizer</a></li>
+            <li><a href="pdf-merger.html">PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Company & Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/about.html">About Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html">Terms & Conditions</a></li>
+            <li><a href="../pages/disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Smart Utility Tools. All rights reserved. Free client-side web utilities.</div>
+        <div>Processed locally on your device for complete privacy.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/tools/gst-calculator.js"></script>
+</body>
+</html>

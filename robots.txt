@@ -1,0 +1,8 @@
+# robots.txt for Smart Utility Tools
+# Note: Update Sitemap URL below to match your live deployed domain (e.g. https://<username>.github.io/<repo>/sitemap.xml)
+
+User-agent: *
+Allow: /
+
+# Sitemap definition
+Sitemap: https://yourusername.github.io/smart-utility-tools/sitemap.xml

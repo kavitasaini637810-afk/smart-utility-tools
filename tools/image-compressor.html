@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Compressor - Reduce Image File Size Online Free</title>
+  <meta name="description" content="Compress JPEG and WebP images online with adjustable quality controls. Compare before and after file sizes with honest reporting and local browser privacy.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <span class="brand-icon">S</span>
+        <span>Smart Utility Tools</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../pages/all-tools.html" class="nav-link">All Tools</a></li>
+          <li><a href="../pages/pdf-tools.html" class="nav-link">PDF Tools</a></li>
+          <li><a href="../pages/image-tools.html" class="nav-link active">Image Tools</a></li>
+          <li><a href="../pages/calculator-tools.html" class="nav-link">Calculators</a></li>
+          <li><a href="../pages/text-tools.html" class="nav-link">Text Tools</a></li>
+          <li><a href="../pages/about.html" class="nav-link">About</a></li>
+          <li><a href="../pages/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container tool-page-container">
+
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li><a href="../pages/image-tools.html">Image Tools</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li aria-current="page">Image Compressor</li>
+        </ol>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header-block">
+        <span class="badge badge-success tool-header-badge">Client-Side Privacy</span>
+        <h1 class="tool-page-title">Image Compressor</h1>
+        <p class="tool-page-subtitle">Shrink image file weight without losing clarity. Adjust compression quality, convert to modern WebP or JPEG, and inspect before-and-after savings.</p>
+      </div>
+
+      <!-- Tool Panel -->
+      <div class="tool-panel">
+        
+        <div id="compressError" class="alert alert-danger" style="display: none;" role="alert"></div>
+
+        <!-- Drag & Drop Zone -->
+        <div class="dropzone" id="compressDropzone">
+          <div class="dropzone-icon">🗜️</div>
+          <div class="dropzone-text">Drag & Drop Your Image to Compress</div>
+          <div class="dropzone-subtext">Supports JPEG, PNG, WebP, and BMP (Up to 30MB)</div>
+          <input type="file" id="compressFileInput" class="file-input-hidden" accept="image/jpeg,image/png,image/webp,image/bmp" aria-label="Upload image to compress">
+        </div>
+
+        <!-- Controls (Hidden until file is loaded) -->
+        <div id="compressControls" style="display: none; margin-top: 1.5rem;">
+          
+          <div class="preview-container">
+            <div class="preview-box">
+              <strong style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem;">Original Image:</strong>
+              <img id="compressOrigPreview" alt="Original Image Preview">
+              <div class="preview-meta" id="compressOrigMeta"></div>
+            </div>
+          </div>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+          <div class="form-row" style="align-items: center;">
+            <div class="form-group" style="flex: 2;">
+              <label for="qualitySlider" class="form-label">
+                Compression Quality: <span id="qualityValue" style="color: var(--primary); font-weight: 700;">75%</span>
+              </label>
+              <input type="range" id="qualitySlider" min="10" max="100" value="75" step="1" style="width: 100%; cursor: pointer;">
+              <span class="form-hint">Lower percentage yields smaller file size; 70-85% is recommended for web use.</span>
+            </div>
+
+            <div class="form-group" style="flex: 1;">
+              <label for="compressFormat" class="form-label">Target Format:</label>
+              <select id="compressFormat" class="form-control">
+                <option value="image/jpeg" selected>JPEG (.jpg)</option>
+                <option value="image/webp">WebP (.webp)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" id="compressBtn" class="btn btn-primary" style="margin-top: 1rem;">Compress Image</button>
+        </div>
+
+        <!-- Result Box -->
+        <div id="compressResult" class="result-card" style="display: none;" aria-live="polite">
+          <div class="result-title">
+            <span>Compression Comparison</span>
+          </div>
+
+          <div id="compressSavings" class="alert" style="margin-bottom: 1.25rem;"></div>
+
+          <div class="preview-box">
+            <strong style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem;">Compressed Image:</strong>
+            <img id="compressCompPreview" alt="Compressed Image Output">
+            <div class="preview-meta" id="compressCompMeta" style="margin: 0.75rem 0;"></div>
+            <button type="button" id="downloadCompressedBtn" class="btn btn-primary">⬇️ Download Compressed Image</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Documentation & Examples -->
+      <section class="tool-documentation">
+        <div class="doc-section">
+          <h2 class="doc-title"><span>📖</span> How Image Compression Works</h2>
+          <div class="doc-content">
+            <p>Our tool utilizes client-side lossy encoding via the standard HTML5 Canvas <code>toBlob()</code> API:</p>
+            <ul>
+              <li><strong>Lossy Encoding:</strong> High-frequency pixel variations invisible to the naked eye are discarded to reduce byte storage.</li>
+              <li><strong>Format Conversion:</strong> Converting uncompressed PNG images containing photographs to WebP or JPEG regularly yields over 80% file size reduction.</li>
+              <li><strong>Honest Size Reporting:</strong> If an uploaded image is already heavily compressed, re-compressing at a higher quality setting may increase file size. Our tool never fakes compression results and alerts you honestly if file size does not decrease.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>💡</span> Practical Use Case</h3>
+          <div class="example-box">
+            <strong>Email Attachment Scenario:</strong> Your email client limits attachments to 2MB, but your scanned photo is 4.5MB.<br>
+            Using <strong>Image Compressor</strong> at 80% quality reduces the file size to 850 KB with crisp visual readability!
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Why did my file size increase after compression?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                If the original image was already saved at a low quality (e.g. 50%), re-encoding it at 85% causes the browser encoder to store additional compression artifacts, increasing byte size. Try lowering the quality slider to 40-50% or switching between JPEG and WebP.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Does this tool support WebP transparency?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes. If you choose WebP format, transparency layers are preserved. For JPEG format, transparent areas are cleanly filled with a solid white background.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3 class="doc-title">Related Utilities</h3>
+          <div class="related-grid">
+            <a href="image-resizer.html" class="related-card">
+              <div class="related-card-title">Image Resizer</div>
+              <div class="related-card-cat">Image Tools</div>
+            </a>
+            <a href="pdf-to-images.html" class="related-card">
+              <div class="related-card-title">PDF to Images</div>
+              <div class="related-card-cat">PDF Tools</div>
+            </a>
+            <a href="pdf-merger.html" class="related-card">
+              <div class="related-card-title">PDF Merger</div>
+              <div class="related-card-cat">PDF Tools</div>
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="brand-link">
+            <span class="brand-icon">S</span>
+            <span>Smart Utility Tools</span>
+          </a>
+          <p class="footer-brand-desc">
+            Free, fast, and privacy-conscious online utilities for calculations, text analysis, image optimization, and PDF processing.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/pdf-tools.html">PDF Tools</a></li>
+            <li><a href="../pages/image-tools.html">Image Tools</a></li>
+            <li><a href="../pages/calculator-tools.html">Calculators</a></li>
+            <li><a href="../pages/text-tools.html">Text Utilities</a></li>
+            <li><a href="../pages/all-tools.html">All 10 Tools</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Popular Tools</h3>
+          <ul class="footer-links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="image-resizer.html">Image Resizer</a></li>
+            <li><a href="pdf-merger.html">PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Company & Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/about.html">About Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html">Terms & Conditions</a></li>
+            <li><a href="../pages/disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Smart Utility Tools. All rights reserved. Free client-side web utilities.</div>
+        <div>Processed locally on your device for complete privacy.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/tools/image-compressor.js"></script>
+</body>
+</html>

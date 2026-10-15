@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Resizer - Resize Photo Dimensions Online Free</title>
+  <meta name="description" content="Resize image width and height in pixels with aspect ratio preservation. Fast, private HTML5 Canvas processing with zero server uploads and instant downloads.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <span class="brand-icon">S</span>
+        <span>Smart Utility Tools</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../pages/all-tools.html" class="nav-link">All Tools</a></li>
+          <li><a href="../pages/pdf-tools.html" class="nav-link">PDF Tools</a></li>
+          <li><a href="../pages/image-tools.html" class="nav-link active">Image Tools</a></li>
+          <li><a href="../pages/calculator-tools.html" class="nav-link">Calculators</a></li>
+          <li><a href="../pages/text-tools.html" class="nav-link">Text Tools</a></li>
+          <li><a href="../pages/about.html" class="nav-link">About</a></li>
+          <li><a href="../pages/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container tool-page-container">
+
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li><a href="../pages/image-tools.html">Image Tools</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li aria-current="page">Image Resizer</li>
+        </ol>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header-block">
+        <span class="badge badge-success tool-header-badge">Client-Side Privacy</span>
+        <h1 class="tool-page-title">Image Resizer</h1>
+        <p class="tool-page-subtitle">Resize photo dimensions to exact width and height specifications with automatic aspect-ratio locking. Processed safely in your local browser.</p>
+      </div>
+
+      <!-- Tool Panel -->
+      <div class="tool-panel">
+        
+        <div id="resizerError" class="alert alert-danger" style="display: none;" role="alert"></div>
+
+        <!-- Drag & Drop Zone -->
+        <div class="dropzone" id="dropzone">
+          <div class="dropzone-icon">🖼️</div>
+          <div class="dropzone-text">Drag & Drop Your Image Here</div>
+          <div class="dropzone-subtext">or click to browse from your device (JPEG, PNG, WebP)</div>
+          <input type="file" id="fileInput" class="file-input-hidden" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml" aria-label="Upload image to resize">
+        </div>
+
+        <!-- Controls (Hidden until file is loaded) -->
+        <div id="resizeControls" style="display: none; margin-top: 1.5rem;">
+          
+          <div class="preview-container">
+            <div class="preview-box">
+              <strong style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem;">Original Image:</strong>
+              <img id="originalPreview" alt="Original Upload Preview">
+              <div class="preview-meta" id="originalMeta"></div>
+            </div>
+          </div>
+
+          <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="resizeWidth" class="form-label">New Width (Pixels):</label>
+              <input type="number" id="resizeWidth" class="form-control" min="1" max="8000" placeholder="Width">
+            </div>
+
+            <div class="form-group">
+              <label for="resizeHeight" class="form-label">New Height (Pixels):</label>
+              <input type="number" id="resizeHeight" class="form-control" min="1" max="8000" placeholder="Height">
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin-top: 0.5rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.875rem; font-weight: 600;">
+              <input type="checkbox" id="lockAspect" checked>
+              <span>Maintain Aspect Ratio</span>
+            </label>
+
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <label for="outputFormat" class="form-label" style="margin-bottom: 0;">Output Format:</label>
+              <select id="outputFormat" class="form-control" style="width: auto; padding: 0.4rem 0.75rem;">
+                <option value="image/png" selected>PNG (Lossless)</option>
+                <option value="image/jpeg">JPEG (.jpg)</option>
+                <option value="image/webp">WebP (.webp)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" id="resizeBtn" class="btn btn-primary" style="margin-top: 1.5rem;">Resize Image Now</button>
+        </div>
+
+        <!-- Result Box -->
+        <div id="resizerResult" class="result-card" style="display: none;">
+          <div class="result-title">
+            <span>Resized Image Ready:</span>
+          </div>
+
+          <div class="preview-box">
+            <img id="resizedPreview" alt="Resized Image Output">
+            <div class="preview-meta" id="resizedMeta" style="margin: 0.75rem 0;"></div>
+            <button type="button" id="downloadResizedBtn" class="btn btn-primary">⬇️ Download Resized Image</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Instructions & Documentation -->
+      <section class="tool-documentation">
+        <div class="doc-section">
+          <h2 class="doc-title"><span>📖</span> How to Resize Images Safely</h2>
+          <div class="doc-content">
+            <ol>
+              <li><strong>Upload Image:</strong> Drag any photo or click the upload area.</li>
+              <li><strong>Adjust Dimensions:</strong> Enter your desired pixel width or height. With <em>Maintain Aspect Ratio</em> enabled, the other dimension automatically computes proportionally.</li>
+              <li><strong>Choose Format:</strong> Select PNG for graphics, JPEG for standard photos, or WebP for optimized web delivery.</li>
+              <li><strong>Download:</strong> Click <em>Resize Image Now</em> followed by <em>Download Resized Image</em> to save the newly dimensioned file.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>💡</span> Practical Use Case</h3>
+          <div class="example-box">
+            <strong>Website Banner:</strong> You take a 4032 × 3024 px photo with your phone camera (5.2 MB).<br>
+            Using the resizer to scale it down to 1200 × 900 px reduces the file size to under 300 KB, boosting webpage loading speed significantly!
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Are my images uploaded to the cloud?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                No. All resizing executes through your browser's HTML5 Canvas context. Your images remain private on your computer or phone.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What is the maximum allowed image size?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                We support files up to 25MB and dimensions up to 8,000 pixels. This safeguard prevents mobile devices and computers from running out of system memory.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3 class="doc-title">Related Utilities</h3>
+          <div class="related-grid">
+            <a href="image-compressor.html" class="related-card">
+              <div class="related-card-title">Image Compressor</div>
+              <div class="related-card-cat">Image Tools</div>
+            </a>
+            <a href="pdf-to-images.html" class="related-card">
+              <div class="related-card-title">PDF to Images</div>
+              <div class="related-card-cat">PDF Tools</div>
+            </a>
+            <a href="word-counter.html" class="related-card">
+              <div class="related-card-title">Word Counter</div>
+              <div class="related-card-cat">Text Tools</div>
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="brand-link">
+            <span class="brand-icon">S</span>
+            <span>Smart Utility Tools</span>
+          </a>
+          <p class="footer-brand-desc">
+            Free, fast, and privacy-conscious online utilities for calculations, text analysis, image optimization, and PDF processing.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/pdf-tools.html">PDF Tools</a></li>
+            <li><a href="../pages/image-tools.html">Image Tools</a></li>
+            <li><a href="../pages/calculator-tools.html">Calculators</a></li>
+            <li><a href="../pages/text-tools.html">Text Utilities</a></li>
+            <li><a href="../pages/all-tools.html">All 10 Tools</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Popular Tools</h3>
+          <ul class="footer-links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="image-resizer.html">Image Resizer</a></li>
+            <li><a href="pdf-merger.html">PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Company & Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/about.html">About Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html">Terms & Conditions</a></li>
+            <li><a href="../pages/disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Smart Utility Tools. All rights reserved. Free client-side web utilities.</div>
+        <div>Processed locally on your device for complete privacy.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/tools/image-resizer.js"></script>
+</body>
+</html>

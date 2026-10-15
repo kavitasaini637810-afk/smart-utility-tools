@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Merger - Combine Multiple PDF Files Online Free</title>
+  <meta name="description" content="Merge multiple PDF documents into a single file directly in your web browser. Drag, drop, reorder pages, and merge with zero server uploads for total privacy.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <span class="brand-icon">S</span>
+        <span>Smart Utility Tools</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../pages/all-tools.html" class="nav-link">All Tools</a></li>
+          <li><a href="../pages/pdf-tools.html" class="nav-link active">PDF Tools</a></li>
+          <li><a href="../pages/image-tools.html" class="nav-link">Image Tools</a></li>
+          <li><a href="../pages/calculator-tools.html" class="nav-link">Calculators</a></li>
+          <li><a href="../pages/text-tools.html" class="nav-link">Text Tools</a></li>
+          <li><a href="../pages/about.html" class="nav-link">About</a></li>
+          <li><a href="../pages/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container tool-page-container">
+
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li><a href="../pages/pdf-tools.html">PDF Tools</a></li>
+          <li class="breadcrumb-separator">/</li>
+          <li aria-current="page">PDF Merger</li>
+        </ol>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header-block">
+        <span class="badge badge-success tool-header-badge">Client-Side Privacy</span>
+        <h1 class="tool-page-title">PDF Merger</h1>
+        <p class="tool-page-subtitle">Combine multiple PDF documents into a single consolidated file. Reorder documents, inspect page counts, and compile locally without server uploads.</p>
+      </div>
+
+      <!-- Tool Panel -->
+      <div class="tool-panel">
+        
+        <div id="mergeError" class="alert alert-danger" style="display: none;" role="alert"></div>
+        <div id="mergeSuccess" class="alert alert-success" style="display: none;" role="status"></div>
+
+        <!-- Dropzone -->
+        <div class="dropzone" id="pdfDropzone">
+          <div class="dropzone-icon">📑</div>
+          <div class="dropzone-text">Select or Drag & Drop PDF Files Here</div>
+          <div class="dropzone-subtext">Add 2 or more PDF documents to combine</div>
+          <input type="file" id="pdfFileInput" class="file-input-hidden" accept="application/pdf" multiple aria-label="Upload PDF files to merge">
+        </div>
+
+        <!-- Merge Controls & List (Hidden until at least 1 file loaded) -->
+        <div id="mergeControls" style="display: none; margin-top: 1.5rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Selected Documents (Merge Order):</h3>
+          
+          <ul id="pdfFileList" class="file-list"></ul>
+
+          <div id="mergeProgressContainer" class="progress-container">
+            <div id="mergeProgressBar" class="progress-bar"></div>
+          </div>
+          <div id="mergeStatus" style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.5rem;"></div>
+
+          <div class="btn-group">
+            <button type="button" id="mergeBtn" class="btn btn-primary">Merge PDFs Now</button>
+            <button type="button" id="downloadMergedPdfBtn" class="btn btn-secondary">⬇️ Download Merged PDF</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Documentation & Examples -->
+      <section class="tool-documentation">
+        <div class="doc-section">
+          <h2 class="doc-title"><span>📖</span> How to Combine PDFs Securely</h2>
+          <div class="doc-content">
+            <ol>
+              <li><strong>Select Files:</strong> Drag and drop your PDF files into the drop area or click to select multiple files at once.</li>
+              <li><strong>Organize Sequence:</strong> Use the ▲ and ▼ buttons on each file row to arrange the documents in the exact sequence you want them merged.</li>
+              <li><strong>Delete Extras:</strong> Click the ✖ button to remove any accidental file selections.</li>
+              <li><strong>Merge & Download:</strong> Click <em>Merge PDFs Now</em>. Once compiled, click <em>Download Merged PDF</em> to save your combined document.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>💡</span> Practical Use Case</h3>
+          <div class="example-box">
+            <strong>Job Application Binder:</strong> Combine your Cover Letter (1 page), Resume (2 pages), and Recommendation Letters (3 pages) into one professional 6-page PDF document in seconds!
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Are my confidential PDF documents uploaded to your servers?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                No. The merger executes locally on your machine using <strong>pdf-lib</strong> WebAssembly and JavaScript. Your contracts, bank statements, and tax forms never touch a remote server.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Can I merge password-protected PDFs?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                For security reasons, password-protected or heavily encrypted PDFs must have their passwords removed before merging.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+          <h3 class="doc-title">Related Utilities</h3>
+          <div class="related-grid">
+            <a href="pdf-splitter.html" class="related-card">
+              <div class="related-card-title">PDF Splitter</div>
+              <div class="related-card-cat">PDF Tools</div>
+            </a>
+            <a href="pdf-to-images.html" class="related-card">
+              <div class="related-card-title">PDF to Images</div>
+              <div class="related-card-cat">PDF Tools</div>
+            </a>
+            <a href="image-resizer.html" class="related-card">
+              <div class="related-card-title">Image Resizer</div>
+              <div class="related-card-cat">Image Tools</div>
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="brand-link">
+            <span class="brand-icon">S</span>
+            <span>Smart Utility Tools</span>
+          </a>
+          <p class="footer-brand-desc">
+            Free, fast, and privacy-conscious online utilities for calculations, text analysis, image optimization, and PDF processing.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/pdf-tools.html">PDF Tools</a></li>
+            <li><a href="../pages/image-tools.html">Image Tools</a></li>
+            <li><a href="../pages/calculator-tools.html">Calculators</a></li>
+            <li><a href="../pages/text-tools.html">Text Utilities</a></li>
+            <li><a href="../pages/all-tools.html">All 10 Tools</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Popular Tools</h3>
+          <ul class="footer-links">
+            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="image-resizer.html">Image Resizer</a></li>
+            <li><a href="pdf-merger.html">PDF Merger</a></li>
+            <li><a href="pdf-splitter.html">PDF Splitter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Company & Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../pages/about.html">About Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../pages/terms.html">Terms & Conditions</a></li>
+            <li><a href="../pages/disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Smart Utility Tools. All rights reserved. Free client-side web utilities.</div>
+        <div>Processed locally on your device for complete privacy.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vendor & Application Scripts with CDN Fallback -->
+  <script src="../assets/vendor/pdf-lib.min.js"></script>
+  <script>
+    if (typeof PDFLib === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js"><\/script>');
+    }
+  </script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/tools/pdf-merger.js"></script>
+</body>
+</html>
