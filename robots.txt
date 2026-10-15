@@ -5,5 +5,5 @@ User-agent: *
 Allow: /
 
 # Sitemap definition
-Sitemap: https://yourusername.github.io/smart-utility-tools/sitemap.xml
+Sitemap: https://kavitasaini637810-afk.github.io/smart-utility-tools/sitemap.xml
 
