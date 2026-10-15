@@ -44,3 +44,4 @@ test('Age Calculator - Feb 29 leap year birthday countdown', () => {
   const res = AgeCalculator.calculateAge('2004-02-29', '2026-10-15');
   assert.ok(res.daysUntilNextBday > 0);
 });
+

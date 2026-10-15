@@ -176,3 +176,4 @@ var PercentageCalc = (function () {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PercentageCalc;
 }
+

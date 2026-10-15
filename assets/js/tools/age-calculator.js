@@ -167,3 +167,4 @@ var AgeCalculator = (function () {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = AgeCalculator;
 }
+

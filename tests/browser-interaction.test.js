@@ -180,3 +180,4 @@ test('DOM Interaction - Contact Form validation', () => {
   assert.equal(errorEl.style.display, 'block');
   assert.equal(nameError.style.display, 'block');
 });
+

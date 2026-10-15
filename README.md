@@ -210,3 +210,4 @@ Third-party libraries:
 - [PDF-Lib](https://pdf-lib.js.org/) - MIT License
 - [PDF.js](https://mozilla.github.io/pdf.js/) - Apache-2.0 License
 - [JSZip](https://stuk.github.io/jszip/) - MIT License
+

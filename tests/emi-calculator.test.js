@@ -38,3 +38,4 @@ test('EMI Calculator - invalid tenure validation', () => {
   const res2 = EMICalculator.calculateEMI(10000, 5, 700, 'months');
   assert.ok(res2.error);
 });
+

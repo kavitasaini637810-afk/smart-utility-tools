@@ -234,3 +234,4 @@ window.SmartTools = {
     }, 1000);
   }
 };
+

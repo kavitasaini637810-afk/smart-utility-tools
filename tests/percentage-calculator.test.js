@@ -49,3 +49,4 @@ test('Percentage Calculator - invalid inputs', () => {
   const res = PercentageCalc.calculatePercentOf(NaN, 100);
   assert.ok(res.error);
 });
+

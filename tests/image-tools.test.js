@@ -51,3 +51,4 @@ test('Image Compressor - savings and percentage calculations', () => {
   assert.equal(c2.percent, -20.0);
   assert.equal(c2.saved, false);
 });
+

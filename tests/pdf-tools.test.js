@@ -79,3 +79,4 @@ test('PDF Merger & Splitter - Real PDF binary generation & manipulation', async 
   const finalSplit = await PDFDocument.load(splitBytes);
   assert.equal(finalSplit.getPageCount(), 3, 'Extracted document must contain exactly 3 pages');
 });
+

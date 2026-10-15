@@ -43,3 +43,4 @@ test('GST Calculator - invalid inputs', () => {
   const res3 = GSTCalculator.calculateGST(100, -5, 'exclusive');
   assert.ok(res3.error);
 });
+
