@@ -183,7 +183,7 @@ GitHub Pages will automatically rebuild and deploy your changes.
 In `sitemap.xml` and `robots.txt`, replace the placeholder URL (`https://yourusername.github.io/smart-utility-tools/`) with your actual deployed URL (e.g., `https://jane-dev.github.io/smart-utility-tools/` or your custom domain).
 
 ### 2. Configure Contact Email
-In `pages/contact.html`, replace `contact@example.com` with your verified operational email address, or connect the `<form>` to a free form handling service such as Formspree or Formkeep.
+The verified operational contact email is configured as `kavitasaini637810@gmail.com` across `pages/contact.html`, `pages/privacy-policy.html`, and `pages/about.html`. You can also connect the contact `<form>` to an external form handling service such as Formspree or Formkeep if preferred.
 
 ### 3. Google AdSense Monetization Setup
 The website is architected to be 100% compliant with Google AdSense policies:
