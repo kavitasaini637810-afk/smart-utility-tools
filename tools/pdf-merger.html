@@ -28,15 +28,39 @@
       "name": "Are my confidential PDF documents uploaded to your servers?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The merger executes locally on your machine using pdf-lib WebAssembly and JavaScript. Your contracts, bank statements, and tax forms never touch a remote server."
+        "text": "No. The merger executes completely on your device using PDF-Lib WebAssembly and JavaScript. Your tax returns, salary slips, and legal contracts never touch an external server or cloud database."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I merge password-protected PDFs?",
+      "name": "Can I merge password-protected or encrypted PDFs?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "For security reasons, password-protected or heavily encrypted PDFs must have their passwords removed before merging."
+        "text": "For security reasons, password-protected or heavily encrypted PDFs must have their security passwords removed before merging, as browser-based cryptographic sandboxes cannot access locked document dictionaries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a limit on how many PDF files I can merge?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no artificial file count limit. You can combine 2, 5, 10, or more documents, limited only by your computer or smartphone's available browser memory (RAM)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does merging reduce text clarity or document resolution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. PDF-Lib performs direct vector and stream copying without re-rendering or rasterizing pages. All vector text, fonts, embedded high-resolution graphics, and digital signatures remain 100% intact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I combine PDFs with different page sizes (e.g. Letter and A4)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Each individual page retains its original native dimensions, margins, and orientation (portrait or landscape) in the merged document."
       }
     }
   ]
@@ -130,26 +154,40 @@
       <!-- Documentation & Examples -->
       <section class="tool-documentation">
         <div class="doc-section">
-          <h2 class="doc-title"><span>📖</span> How to Combine PDFs Securely</h2>
+          <h2 class="doc-title"><span>📖</span> How to Combine PDFs Securely (पीडीएफ फाइलों को एक साथ जोड़ना)</h2>
           <div class="doc-content">
+            <p>Combining multiple PDF documents into a single organized file simplifies sharing, printing, and archiving. Follow these straightforward steps:</p>
             <ol>
-              <li><strong>Select Files:</strong> Drag and drop your PDF files into the drop area or click to select multiple files at once.</li>
-              <li><strong>Organize Sequence:</strong> Use the ▲ and ▼ buttons on each file row to arrange the documents in the exact sequence you want them merged.</li>
-              <li><strong>Delete Extras:</strong> Click the ✖ button to remove any accidental file selections.</li>
-              <li><strong>Merge &amp; Download:</strong> Click <em>Merge PDFs Now</em>. Once compiled, click <em>Download Merged PDF</em> to save your combined document.</li>
+              <li><strong>Select Your PDF Files:</strong> Drag and drop multiple PDF documents into the upload zone, or click to browse files from your computer or smartphone.</li>
+              <li><strong>Arrange Document Order:</strong> Use the interactive <strong>▲ (Move Up)</strong> and <strong>▼ (Move Down)</strong> buttons next to each document to order them in the exact chronological sequence you desire.</li>
+              <li><strong>Remove Unneeded Files:</strong> Click the <strong>✖ (Remove)</strong> button next to any file uploaded by mistake.</li>
+              <li><strong>Compile &amp; Download:</strong> Click <em>Merge PDFs Now</em>. Our client-side PDF compiler concatenates all pages into a unified document in seconds. Click <em>Download Merged PDF</em> to save your file.</li>
             </ol>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>📁</span> Common Use Cases for Merging PDFs</h3>
+          <div class="doc-content">
+            <ul>
+              <li><strong>Job Applications &amp; Resumes:</strong> Merge your personalized cover letter, curriculum vitae (CV), university transcripts, and professional recommendation letters into one neat application binder.</li>
+              <li><strong>Tax Filings &amp; Financial Audits:</strong> Combine monthly bank statements, salary slips, investment proofs, and expense invoices into an organized annual financial package.</li>
+              <li><strong>Legal Contracts &amp; Real Estate:</strong> Unify property deeds, lease agreements, tenant disclosures, and addendums into a single continuous contract.</li>
+              <li><strong>Academic Study Guides:</strong> Combine lecture slides, lab reports, and research papers for streamlined examination revision.</li>
+            </ul>
           </div>
         </div>
 
         <div class="doc-section">
           <h3 class="doc-title"><span>💡</span> Practical Use Case</h3>
           <div class="example-box">
-            <strong>Job Application Binder:</strong> Combine your Cover Letter (1 page), Resume (2 pages), and Recommendation Letters (3 pages) into one professional 6-page PDF document in seconds!
+            <strong>Job Application Scenario:</strong> You have a 1-page Cover Letter, a 2-page Resume, and 3 single-page Certificates.<br>
+            Using <strong>PDF Merger</strong>, arrange them in sequence: Cover Letter → Resume → Certificates. Click merge to generate a clean, unified 6-page PDF ready for employer submission!
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions (FAQ)</h3>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
@@ -157,16 +195,43 @@
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                No. The merger executes locally on your machine using <strong>pdf-lib</strong> WebAssembly and JavaScript. Your contracts, bank statements, and tax forms never touch a remote server.
+                No. The merger executes completely on your device using <strong>PDF-Lib</strong> WebAssembly and JavaScript. Your tax returns, salary slips, and legal contracts never touch an external server or cloud database.
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>Can I merge password-protected PDFs?</span>
+                <span>Can I merge password-protected or encrypted PDFs?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                For security reasons, password-protected or heavily encrypted PDFs must have their passwords removed before merging.
+                For security reasons, password-protected or heavily encrypted PDFs must have their security passwords removed before merging, as browser-based cryptographic sandboxes cannot access locked document dictionaries.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Is there a limit on how many PDF files I can merge?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                There is no artificial file count limit. You can combine 2, 5, 10, or more documents, limited only by your computer or smartphone's available browser memory (RAM).
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Does merging reduce text clarity or document resolution?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                No. PDF-Lib performs direct vector and stream copying without re-rendering or rasterizing pages. All vector text, fonts, embedded high-resolution graphics, and digital signatures remain 100% intact.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Can I combine PDFs with different page sizes (e.g. Letter and A4)?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes. Each individual page retains its original native dimensions, margins, and orientation (portrait or landscape) in the merged document.
               </div>
             </div>
           </div>
@@ -190,7 +255,6 @@
             </a>
           </div>
         </div>
-
       </section>
 
     </div>

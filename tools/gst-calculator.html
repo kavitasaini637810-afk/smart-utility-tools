@@ -25,18 +25,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "When does IGST apply instead of CGST/SGST?",
+      "name": "When does IGST apply instead of CGST and SGST?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "IGST (Integrated GST) applies when goods or services are supplied across state borders or imported. CGST and SGST apply when the buyer and supplier reside within the same state."
+        "text": "IGST (Integrated GST) applies whenever goods or services are supplied across state boundaries (inter-state) or during international import/export. CGST and SGST apply whenever both the supplier and recipient operate within the same state (intra-state)."
       }
     },
     {
       "@type": "Question",
-      "name": "What items fall under the 0% GST bracket?",
+      "name": "How do I determine the original base price from a tax-inclusive MRP bill?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Essential food items like fresh milk, grain, vegetables, and unbranded necessities typically fall under the 0% exempt GST slab in most GST jurisdictions."
+        "text": "Select the 'GST Inclusive (Remove GST)' option in the calculator. Enter the gross bill amount and select the tax rate. The calculator automatically divides the gross amount by (1 + Tax Rate / 100) to isolate the exact pre-tax base price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Input Tax Credit (ITC) in GST?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Input Tax Credit (ITC) allows registered businesses to offset the GST tax they paid on commercial inputs and purchases against the GST tax they collect on outgoing sales, eliminating cascading double-taxation across supply chains."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I enter custom GST percentage rates not listed in the preset radio buttons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Simply select the 'Custom Rate' option in the form and enter your specific regional or statutory tax rate (e.g., 3% for precious metals, 7.5%, or international VAT percentages)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool replace official accounting or tax filing software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator is provided for estimation, commercial quoting, and informational planning purposes. Official tax filings should always be reconciled through certified accounting software or an accredited tax advisor."
       }
     }
   ]
@@ -196,51 +220,133 @@
       <!-- Documentation & Examples -->
       <section class="tool-documentation">
         <div class="doc-section">
-          <h2 class="doc-title"><span>📖</span> How GST Calculations Work</h2>
+          <h2 class="doc-title"><span>📖</span> How GST Calculations Work (जीएसटी की गणना)</h2>
           <div class="doc-content">
-            <p>Goods and Services Tax can be computed in two standard directions:</p>
+            <p>Goods and Services Tax (GST / VAT) is a comprehensive destination-based indirect tax levied on the manufacture, sale, and consumption of goods and services. Our calculator supports both standard invoice computation workflows:</p>
             <ul>
-              <li><strong>GST Exclusive (Add GST):</strong> When you have the pre-tax base price:<br>
-                <code>GST Amount = (Base Amount × GST Rate) ÷ 100</code><br>
-                <code>Total Invoice Amount = Base Amount + GST Amount</code>
+              <li><strong>1. GST Exclusive (Add GST - बेस प्राइस पर टैक्स जोड़ना):</strong> Applied when you have the pre-tax base price of a product or service and need to calculate the applicable tax and gross invoice total:<br>
+                <code>GST Tax Amount = (Base Amount × GST Rate) ÷ 100</code><br>
+                <code>Total Invoice Amount = Base Amount + GST Tax Amount</code>
               </li>
-              <li><strong>GST Inclusive (Remove GST):</strong> When you have the gross price and need to determine how much was tax:<br>
-                <code>Base Amount = Gross Amount ÷ (1 + (GST Rate ÷ 100))</code><br>
-                <code>GST Amount = Gross Amount - Base Amount</code>
+              <li><strong>2. GST Inclusive (Remove GST - कुल मूल्य से टैक्स अलग करना):</strong> Applied when a price is already gross / inclusive of taxes (such as retail MRP prices) and you need to reverse-calculate the pre-tax base price and exact tax portion:<br>
+                <code>Base Amount = Gross Amount ÷ [1 + (GST Rate ÷ 100)]</code><br>
+                <code>GST Tax Amount = Gross Amount - Base Amount</code>
               </li>
-              <li><strong>Tax Distribution:</strong> For transactions within the same state (Intra-state), tax is split evenly between Central GST (CGST) and State GST (SGST). For interstate transactions, Integrated GST (IGST) applies.</li>
             </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>🏛️</span> Jurisdictional Tax Split: CGST, SGST, and IGST</h3>
+          <div class="doc-content">
+            <p>Under GST regulatory architecture, taxes are divided between central and state governments depending on transaction jurisdiction:</p>
+            <ul>
+              <li><strong>Intra-State Transactions (Within the Same State):</strong> Taxes are split evenly into two equal halves: <strong>Central GST (CGST - 50%)</strong> and <strong>State GST (SGST - 50%)</strong> or Union Territory GST (UTGST). For example, on an 18% tax item, 9% goes to CGST and 9% goes to SGST.</li>
+              <li><strong>Inter-State Transactions (Across State Borders or Imports):</strong> The entire tax amount is levied under <strong>Integrated GST (IGST - 100%)</strong>, collected by the Central Government and apportioned to the consuming state.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>📋</span> Standard GST Rate Slabs</h3>
+          <div class="doc-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>GST Slab Rate</th>
+                    <th>Typical Product &amp; Service Categories</th>
+                    <th>Jurisdictional Split</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>0% (Exempt)</strong></td>
+                    <td>Essential food items, fresh produce, milk, unbranded grains, public healthcare, and primary education.</td>
+                    <td>No Tax</td>
+                  </tr>
+                  <tr>
+                    <td><strong>5% (Basic)</strong></td>
+                    <td>Packaged food items, tea, coffee, edible oil, basic medicines, economy air transport, and apparel under specified thresholds.</td>
+                    <td>CGST: 2.5% • SGST: 2.5%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>12% (Standard 1)</strong></td>
+                    <td>Processed foods, pharmaceuticals, medical equipment, commercial work contracts, and business travel.</td>
+                    <td>CGST: 6.0% • SGST: 6.0%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>18% (Standard 2)</strong></td>
+                    <td>IT software, telecommunications, banking &amp; financial services, electronics, restaurants, and professional consulting.</td>
+                    <td>CGST: 9.0% • SGST: 9.0%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>28% (Luxury / Sin)</strong></td>
+                    <td>Luxury automobiles, motorcycles, high-end consumer electronics, tobacco, aerated drinks, and gaming establishments.</td>
+                    <td>CGST: 14.0% • SGST: 14.0%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
         <div class="doc-section">
           <h3 class="doc-title"><span>💡</span> Practical Calculation Example</h3>
           <div class="example-box">
-            <strong>Exclusive Example:</strong> Item price is $1,000 with 18% GST.<br>
-            • GST Tax = $180 ($90 CGST + $90 SGST)<br>
-            • Total Invoice = $1,180
+            <strong>Commercial Billing Example:</strong> A software consulting service charges a base fee of $1,000 subject to 18% GST.<br>
+            • <strong>Base Price:</strong> $1,000.00<br>
+            • <strong>Total GST Tax:</strong> $180.00 (Split: CGST = $90.00, SGST = $90.00, or IGST = $180.00)<br>
+            • <strong>Final Invoice Total:</strong> $1,180.00
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions (FAQ)</h3>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>When does IGST apply instead of CGST/SGST?</span>
+                <span>When does IGST apply instead of CGST and SGST?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                IGST (Integrated GST) applies when goods or services are supplied across state borders or imported. CGST and SGST apply when the buyer and supplier reside within the same state.
+                IGST (Integrated GST) applies whenever goods or services are supplied across state boundaries (inter-state) or during international import/export. CGST and SGST apply whenever both the supplier and recipient operate within the same state (intra-state).
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>What items fall under the 0% GST bracket?</span>
+                <span>How do I determine the original base price from a tax-inclusive MRP bill?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                Essential food items like fresh milk, grain, vegetables, and unbranded necessities typically fall under the 0% exempt GST slab in most GST jurisdictions.
+                Select the "GST Inclusive (Remove GST)" option in the calculator. Enter the gross bill amount and select the tax rate. The calculator automatically divides the gross amount by (1 + Tax Rate / 100) to isolate the exact pre-tax base price.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What is Input Tax Credit (ITC) in GST?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Input Tax Credit (ITC) allows registered businesses to offset the GST tax they paid on commercial inputs and purchases against the GST tax they collect on outgoing sales, eliminating cascading double-taxation across supply chains.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Can I enter custom GST percentage rates not listed in the preset radio buttons?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes. Simply select the "Custom Rate" option in the form and enter your specific regional or statutory tax rate (e.g., 3% for precious metals, 7.5%, or international VAT percentages).
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Does this tool replace official accounting or tax filing software?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                No. This calculator is provided for estimation, commercial quoting, and informational planning purposes. Official tax filings should always be reconciled through certified accounting software or an accredited tax advisor.
               </div>
             </div>
           </div>
@@ -250,21 +356,20 @@
         <div class="related-tools">
           <h3 class="doc-title">Related Utilities</h3>
           <div class="related-grid">
-            <a href="percentage-calculator.html" class="related-card">
-              <div class="related-card-title">Percentage Calculator</div>
-              <div class="related-card-cat">Calculators</div>
-            </a>
             <a href="emi-calculator.html" class="related-card">
               <div class="related-card-title">EMI Loan Calculator</div>
               <div class="related-card-cat">Financial</div>
             </a>
-            <a href="word-counter.html" class="related-card">
-              <div class="related-card-title">Word Counter</div>
-              <div class="related-card-cat">Text Tools</div>
+            <a href="percentage-calculator.html" class="related-card">
+              <div class="related-card-title">Percentage Calculator</div>
+              <div class="related-card-cat">Calculators</div>
+            </a>
+            <a href="image-compressor.html" class="related-card">
+              <div class="related-card-title">Image Compressor</div>
+              <div class="related-card-cat">Image Tools</div>
             </a>
           </div>
         </div>
-
       </section>
 
     </div>

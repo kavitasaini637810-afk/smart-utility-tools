@@ -25,18 +25,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Why are images saved in PNG format?",
+      "name": "Why are pages converted to PNG format instead of JPEG?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "PNG uses lossless compression, preserving fine typography, diagrams, tables, and vector curves without blurriness or JPEG artifact noise."
+        "text": "PNG uses lossless compression, which preserves razor-sharp text typography, thin architectural lines, and clean mathematical formulas without the blurry mosquito-noise artifacts common in lossy JPEG files."
       }
     },
     {
       "@type": "Question",
-      "name": "Are my files kept private?",
+      "name": "How do I download all converted pages at once?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. PDF.js and Canvas execute strictly on your device. Zero bytes leave your browser."
+        "text": "Once all pages finish rendering, click the 📦 Download All as ZIP button. Our integrated JSZip engine packages every page into a single pdf-images.zip file for instant one-click downloading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool support multi-page PDF documents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! The converter iterates sequentially through all pages of your document, displaying a real-time progress bar until every page is rendered and previewed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my uploaded PDF documents kept private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PDF.js runs strictly within your browser sandbox. None of your PDF data, pages, or converted images are ever transmitted to or stored on an external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert scanned PDFs containing hand-drawn notes or sketches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PDF.js faithfully renders both vector documents and scanned bitmap PDFs, ensuring handwritten notes, ink signatures, and scanned receipts appear exactly as originally captured."
       }
     }
   ]
@@ -155,44 +179,83 @@
       <!-- Documentation & Examples -->
       <section class="tool-documentation">
         <div class="doc-section">
-          <h2 class="doc-title"><span>📖</span> How PDF to Image Conversion Works</h2>
+          <h2 class="doc-title"><span>📖</span> How PDF to Image Conversion Works (पीडीएफ से इमेज बनाना)</h2>
           <div class="doc-content">
-            <ol>
-              <li><strong>Upload PDF:</strong> Choose your multi-page document.</li>
-              <li><strong>Set Quality Scale:</strong> Select 1.5x for crisp web images or 2.0x for presentation-grade resolution.</li>
-              <li><strong>Convert:</strong> The PDF engine parses the document vector structures and renders every page onto an HTML5 Canvas.</li>
-              <li><strong>Download:</strong> Click <em>Download PNG</em> on individual cards or use <em>Download All as ZIP</em> to grab the entire image collection in one archive file.</li>
-            </ol>
+            <p>Converting PDF document pages into high-resolution image files makes it simple to embed diagrams into presentations, share document summaries on social media, or view pages without a PDF reader:</p>
+            <ul>
+              <li><strong>Local Canvas Rasterization:</strong> Powered by <strong>PDF.js</strong>, Mozilla's high-performance open-source rendering engine. Each page is drawn onto an HTML5 canvas at crisp 1.5× viewport resolution.</li>
+              <li><strong>Lossless PNG Quality:</strong> Renders directly to the PNG (Portable Network Graphics) format, ensuring crystal-clear text readability, sharp table borders, and zero JPEG compression blur.</li>
+              <li><strong>Individual or ZIP Download:</strong> Download individual pages with a single click, or click <em>📦 Download All as ZIP</em> to package all converted pages into a single compressed archive using <strong>JSZip</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>🌟</span> Popular Use Cases for PDF to Image Conversion</h3>
+          <div class="doc-content">
+            <ul>
+              <li><strong>Social Media Document Carousels:</strong> Convert PDF slide decks and infographics into PNG images for multi-slide LinkedIn posts and Instagram carousels.</li>
+              <li><strong>Office Presentations &amp; Word Documents:</strong> Easily embed specific document pages, certificates, or diagrams into PowerPoint, Keynote, or Google Docs presentations.</li>
+              <li><strong>Mobile Messaging &amp; Sharing:</strong> Send single-page receipts or certificate images through WhatsApp, Telegram, or email without forcing recipients to open external PDF viewing apps.</li>
+              <li><strong>Design &amp; Archival:</strong> Import PDF blueprints, architectural plans, and graphic illustrations into Adobe Photoshop, Figma, or Canva.</li>
+            </ul>
           </div>
         </div>
 
         <div class="doc-section">
           <h3 class="doc-title"><span>💡</span> Practical Use Case</h3>
           <div class="example-box">
-            <strong>Social Media &amp; Slides:</strong> You have a 3-page infographic in PDF format and want to share page 1 on Twitter and LinkedIn.<br>
-            Convert to PNG at 2.0x quality and download the image file directly for immediate upload!
+            <strong>Social Media Carousel Scenario:</strong> You created an informative 5-page PDF guide and want to post it as a swipeable carousel on LinkedIn.<br>
+            Upload your PDF to <strong>PDF to Images Converter</strong>. Click <em>📦 Download All as ZIP</em> to receive a neat archive containing <code>page-1.png</code> through <code>page-5.png</code> ready for instant upload!
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions (FAQ)</h3>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>Why are images saved in PNG format?</span>
+                <span>Why are pages converted to PNG format instead of JPEG?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                PNG uses lossless compression, preserving fine typography, diagrams, tables, and vector curves without blurriness or JPEG artifact noise.
+                PNG uses lossless compression, which preserves razor-sharp text typography, thin architectural lines, and clean mathematical formulas without the blurry mosquito-noise artifacts common in lossy JPEG files.
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>Are my files kept private?</span>
+                <span>How do I download all converted pages at once?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                Yes. PDF.js and Canvas execute strictly on your device. Zero bytes leave your browser.
+                Once all pages finish rendering, click the <strong>📦 Download All as ZIP</strong> button. Our integrated JSZip engine packages every page into a single <code>pdf-images.zip</code> file for instant one-click downloading.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Does this tool support multi-page PDF documents?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes! The converter iterates sequentially through all pages of your document, displaying a real-time progress bar until every page is rendered and previewed.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Are my uploaded PDF documents kept private?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes. PDF.js runs strictly within your browser sandbox. None of your PDF data, pages, or converted images are ever transmitted to or stored on an external server.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Can I convert scanned PDFs containing hand-drawn notes or sketches?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes. PDF.js faithfully renders both vector documents and scanned bitmap PDFs, ensuring handwritten notes, ink signatures, and scanned receipts appear exactly as originally captured.
               </div>
             </div>
           </div>
@@ -216,7 +279,6 @@
             </a>
           </div>
         </div>
-
       </section>
 
     </div>

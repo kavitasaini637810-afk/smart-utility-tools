@@ -25,26 +25,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is my text saved or sent to any server?",
+      "name": "Is my text saved or sent to any server? (क्या मेरा टेक्स्ट सर्वर पर भेजा जाता है?)",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. All text parsing happens directly inside your web browser. No text is saved, transmitted, or logged."
+        "text": "No. Smart Utility Tools operates on a strict client-side architecture. All text analysis, string parsing, and character counts execute locally within your browser's JavaScript runtime. Your confidential documents, notes, and essays never touch a remote server."
       }
     },
     {
       "@type": "Question",
-      "name": "How is reading time calculated?",
+      "name": "How is the estimated reading time calculated?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Reading time is estimated using the scientifically accepted standard reading speed of 200 words per minute for adult English readers."
+        "text": "Reading time is calculated using the globally acknowledged cognitive benchmark of 200 words per minute for typical adult readers. If your article contains 600 words, the reading time is computed as exactly 3 minutes."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this counter support languages other than English?",
+      "name": "Does this counter support Hindi, Devanagari, and multilingual scripts?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Our Unicode text iterator supports Spanish, Hindi, French, German, Arabic, Chinese, emojis, and astral character sets."
+        "text": "Yes. Our text parser features full modern Unicode compliance. It accurately calculates words, characters, and spaces across Hindi (हिंदी), Sanskrit, Spanish, French, German, Arabic, Russian, Chinese, Japanese, and emoji symbols."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between characters with and without spaces?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Characters with spaces counts every single byte and keyboard stroke, including spacebar taps and tab spaces. Characters without spaces filters out all whitespace characters to measure only alphanumeric letters, digits, and punctuation marks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do sentence and paragraph counts work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sentences are identified whenever terminal punctuation (. ! ?) is followed by whitespace or an end of line. Paragraphs are recognized whenever distinct lines of text are separated by single or multiple newline carriage returns."
       }
     }
   ]
@@ -147,54 +163,131 @@
       <!-- Tool Instructions & Guide -->
       <section class="tool-documentation">
         <div class="doc-section">
-          <h2 class="doc-title"><span>📖</span> How to Use the Word Counter</h2>
+          <h2 class="doc-title"><span>📖</span> How to Use the Word Counter (उपयोग का तरीका)</h2>
           <div class="doc-content">
+            <p>Our online Word and Character Counter provides instantaneous, real-time analytics as you write or paste content. Follow these simple steps:</p>
             <ol>
-              <li><strong>Type or Paste:</strong> Paste your written content directly into the text area above or start typing immediately.</li>
-              <li><strong>Live Computation:</strong> The statistics grid updates instantaneously with every keystroke.</li>
-              <li><strong>Unicode Support:</strong> Emojis, accented foreign characters, and multibyte symbols are accurately handled.</li>
-              <li><strong>Reading Time:</strong> Estimated based on standard average reading speeds of 200 words per minute.</li>
-              <li><strong>Action Buttons:</strong> Click <em>Copy Text</em> to quickly grab your updated text or <em>Clear Text</em> to reset the editor.</li>
+              <li><strong>Type or Paste Content:</strong> Enter your text directly into the spacious editor box above or copy-paste text from Word, Google Docs, PDF, or email drafts.</li>
+              <li><strong>Real-Time Analytics:</strong> As you type, the live statistics counter immediately recalculates word counts, total characters (including and excluding spaces), complete sentences, paragraphs, and estimated reading time.</li>
+              <li><strong>Full Unicode &amp; Multilingual Support:</strong> Handles international languages (including Hindi / Devanagari, Spanish, French, German, Japanese, Chinese, Arabic) as well as modern emojis and special punctuation marks.</li>
+              <li><strong>Clipboard Utilities:</strong> Use the <em>📋 Copy Text</em> button to instantly copy your refined text to your clipboard, or click <em>🗑️ Clear Text</em> to reset the counter for your next draft.</li>
             </ol>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>📊</span> Key Metric Definitions &amp; Formulas</h3>
+          <div class="doc-content">
+            <p>Understanding how each writing metric is calculated ensures your content adheres strictly to academic, professional, and publishing guidelines:</p>
+            <ul>
+              <li><strong>Words:</strong> Counted by separating continuous sequences of characters delimited by whitespace, tabs, and line breaks. Hyphenated compound words and contractions are parsed consistently.</li>
+              <li><strong>Characters (With Spaces):</strong> Every single symbol typed, including letters, digits, spaces, line returns, and punctuation. This is the exact metric required for character-restricted platforms like social media.</li>
+              <li><strong>Characters (Without Spaces):</strong> Total character count excluding blank spaces and tabs. Crucial for book manuscripts, translation pricing, and academic admissions essays.</li>
+              <li><strong>Sentences:</strong> Identified using sentence-ending punctuation marks (period <code>.</code>, exclamation mark <code>!</code>, and question mark <code>?</code>) followed by whitespace or line termination.</li>
+              <li><strong>Paragraphs:</strong> Calculated by tracking non-empty text blocks separated by newline breaks (<code>\n</code>).</li>
+              <li><strong>Estimated Reading Time:</strong> Based on the scientifically accepted adult average reading speed of <strong>200 words per minute (WPM)</strong>: <code>Reading Time = Total Words ÷ 200</code>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>🎯</span> Standard Word &amp; Character Limits for Creators</h3>
+          <div class="doc-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Platform / Format</th>
+                    <th>Standard Recommended Length</th>
+                    <th>Importance &amp; Objective</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>SEO Blog Post</strong></td>
+                    <td>1,200 – 2,500 words</td>
+                    <td>Provides in-depth topical coverage to satisfy search engine queries and user intent.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Academic Essay</strong></td>
+                    <td>1,000 – 3,000 words</td>
+                    <td>Common university and high school writing length for comprehensive argumentation.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>LinkedIn Post</strong></td>
+                    <td>Up to 3,000 characters (~500 words)</td>
+                    <td>Best engagement occurs around 150 – 300 words with clean paragraph breaks.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>X (Twitter) Post</strong></td>
+                    <td>280 characters</td>
+                    <td>Strict microblogging character limit for concise updates and announcements.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SEO Meta Description</strong></td>
+                    <td>150 – 160 characters</td>
+                    <td>Optimal snippet length for display in Google search results without truncation.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
         <div class="doc-section">
           <h3 class="doc-title"><span>💡</span> Practical Example</h3>
           <div class="example-box">
-            <strong>Input Text:</strong> <em>"The quick brown fox jumps over the lazy dog. It was a sunny morning!"</em><br>
-            <strong>Live Output:</strong> 14 Words • 67 Characters (with spaces) • 54 Characters (without spaces) • 2 Sentences • 1 Paragraph • 5 sec Reading Time.
+            <strong>Input Text:</strong> <em>"Smart Utility Tools provides privacy-first online web tools. All calculations execute directly inside your browser!"</em><br>
+            <strong>Live Output:</strong> 17 Words • 117 Characters (with spaces) • 101 Characters (without spaces) • 2 Sentences • 1 Paragraph • 6 sec Reading Time.
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions (FAQ)</h3>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>Is my text saved or sent to any server?</span>
+                <span>Is my text saved or sent to any server? (क्या मेरा टेक्स्ट सर्वर पर भेजा जाता है?)</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                No. All text parsing happens directly inside your web browser. No text is saved, transmitted, or logged.
+                No. Smart Utility Tools operates on a strict client-side architecture. All text analysis, string parsing, and character counts execute locally within your browser's JavaScript runtime. Your confidential documents, notes, and essays never touch a remote server.
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>How is reading time calculated?</span>
+                <span>How is the estimated reading time calculated?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                Reading time is estimated using the scientifically accepted standard reading speed of 200 words per minute for adult English readers.
+                Reading time is calculated using the globally acknowledged cognitive benchmark of 200 words per minute for typical adult readers. If your article contains 600 words, the reading time is computed as exactly 3 minutes.
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>Does this counter support languages other than English?</span>
+                <span>Does this counter support Hindi, Devanagari, and multilingual scripts?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                Yes. Our Unicode text iterator supports Spanish, Hindi, French, German, Arabic, Chinese, emojis, and astral character sets.
+                Yes. Our text parser features full modern Unicode compliance. It accurately calculates words, characters, and spaces across Hindi (हिंदी), Sanskrit, Spanish, French, German, Arabic, Russian, Chinese, Japanese, and emoji symbols.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What is the difference between characters with and without spaces?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Characters with spaces counts every single byte and keyboard stroke, including spacebar taps and tab spaces. Characters without spaces filters out all whitespace characters to measure only alphanumeric letters, digits, and punctuation marks.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How do sentence and paragraph counts work?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Sentences are identified whenever terminal punctuation (. ! ?) is followed by whitespace or an end of line. Paragraphs are recognized whenever distinct lines of text are separated by single or multiple newline carriage returns.
               </div>
             </div>
           </div>
@@ -218,7 +311,6 @@
             </a>
           </div>
         </div>
-
       </section>
 
     </div>

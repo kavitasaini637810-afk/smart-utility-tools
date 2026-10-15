@@ -25,18 +25,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is the difference between flat interest and reducing balance?",
+      "name": "What is the difference between a Reducing Balance loan and a Flat Rate loan?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In a flat interest loan, interest is calculated on the full initial loan amount throughout the tenure. In reducing balance loans, interest is calculated each month only on the remaining unpaid principal, which significantly lowers your total interest burden."
+        "text": "In a Reducing Balance loan, interest is computed only on the outstanding principal balance each month. In a Flat Rate loan, interest is calculated on the entire original loan amount throughout the full tenure, making flat rate loans significantly more expensive in effective annual cost."
       }
     },
     {
       "@type": "Question",
-      "name": "Does making prepayments change my EMI?",
+      "name": "Does this calculator account for processing fees and insurance?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Prepaying principal reduces your overall outstanding loan balance, allowing you either to shorten your loan tenure or request your lender to lower your future monthly EMI payments."
+        "text": "Our tool computes pure mathematical loan amortization. Commercial lending institutions may charge one-time loan processing fees, documentation charges, stamp duty, or mandatory loan insurance premiums that are billed separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the 12-month amortization schedule preview?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The preview table accurately computes the exact monthly breakdown between principal paid, interest paid, and remaining balance using standard mathematical amortization logic accurate to two decimal cents."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What tenure type should I choose: Years or Months?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both options yield mathematically identical results. Choose 'Years' for long-term home mortgages and education loans (e.g., 10, 15, 20 years), and 'Months' for shorter consumer durable, automobile, or personal loans (e.g., 24, 36, 48 months)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my financial records, income, or loan queries saved?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All calculations run strictly in your client-side browser session. Smart Utility Tools never logs, tracks, or stores your loan queries or financial figures."
       }
     }
   ]
@@ -182,49 +206,100 @@
       <!-- Documentation & Examples -->
       <section class="tool-documentation">
         <div class="doc-section">
-          <h2 class="doc-title"><span>📖</span> Standard Reducing Balance EMI Formula</h2>
+          <h2 class="doc-title"><span>📖</span> Standard Reducing Balance EMI Formula (ईएमआई गणना का सूत्र)</h2>
           <div class="doc-content">
-            <p>The standard Equated Monthly Installment (EMI) formula applied by commercial banks and financial lenders is:</p>
+            <p>An Equated Monthly Installment (EMI) is the fixed monthly amount a borrower pays to a lender on a specified date every month. Commercial banks, credit unions, and housing finance institutions utilize the <strong>Reducing Balance Method</strong>:</p>
             <div class="example-box">
-              <code>EMI = [P × r × (1 + r)^n] / [(1 + r)^n - 1]</code><br><br>
+              <code>EMI = [P × r × (1 + r)^n] ÷ [(1 + r)^n - 1]</code><br><br>
               Where:<br>
-              • <strong>P</strong> = Principal loan amount<br>
-              • <strong>r</strong> = Monthly interest rate (Annual rate ÷ 12 ÷ 100)<br>
-              • <strong>n</strong> = Loan duration in total number of monthly payments
+              • <strong>P (Principal):</strong> The initial loan sanction amount.<br>
+              • <strong>r (Monthly Interest Rate):</strong> Annual Interest Rate divided by 12 months and divided by 100 (e.g., 9% annual = 0.09 / 12 = 0.0075 per month).<br>
+              • <strong>n (Tenure in Months):</strong> Total duration of the loan expressed in months (e.g., 10 years = 120 months).
             </div>
-            <p>If interest rate is 0%, the formula simplifies gracefully to: <code>EMI = P / n</code>.</p>
+            <p>When the loan interest rate is 0% (interest-free financing), the mathematical formula simplifies gracefully to: <code>EMI = P ÷ n</code>.</p>
           </div>
         </div>
 
         <div class="doc-section">
           <h3 class="doc-title"><span>💡</span> Practical Calculation Example</h3>
           <div class="example-box">
-            <strong>Loan Details:</strong> $100,000 Principal • 7.5% Annual Interest • 15 Years (180 Months)<br>
-            <strong>Calculated EMI:</strong> $927.01 per month<br>
-            <strong>Total Interest Paid:</strong> $66,862.15<br>
-            <strong>Total Repayment:</strong> $166,862.15
+            <strong>Loan Scenario:</strong> $100,000 Home Loan • 7.5% Annual Interest Rate • 15 Years (180 Months)<br>
+            • <strong>Monthly EMI:</strong> $927.01<br>
+            • <strong>Total Interest Payable:</strong> $66,862.15<br>
+            • <strong>Total Repayment Amount:</strong> $166,862.15<br>
+            <em>Notice:</em> Interest represents over 40% of the total amount repaid! Making early prepayments can save tens of thousands in interest charges.
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <h3 class="doc-title"><span>📊</span> How Loan Amortization Works</h3>
+          <div class="doc-content">
+            <p>In a reducing balance loan structure, although your monthly installment amount remains constant, the ratio between interest and principal shifts dramatically over time:</p>
+            <ul>
+              <li><strong>Early Loan Period:</strong> In the initial years, your outstanding principal balance is highest. Consequently, the largest portion of your monthly EMI goes directly toward interest, with only a small portion reducing the principal.</li>
+              <li><strong>Middle Loan Period:</strong> As your principal gradually decreases, the monthly interest charge declines, allowing a steadily higher percentage of your EMI to pay down the actual loan principal.</li>
+              <li><strong>Final Loan Period:</strong> During the closing months, nearly all of your monthly EMI is applied directly toward clearing the remaining principal balance.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>💡</span> Smart Strategies to Reduce Loan Interest</h3>
+          <div class="doc-content">
+            <ul>
+              <li><strong>Choose the Shortest Affordable Tenure:</strong> A longer tenure lowers your monthly EMI, but substantially increases total interest paid over the life of the loan.</li>
+              <li><strong>Make Annual Partial Prepayments:</strong> Applying annual bonuses or tax refunds directly toward principal repayment dramatically reduces both remaining tenure and total interest charges.</li>
+              <li><strong>Negotiate Competitive Interest Rates:</strong> Even a 0.5% lower interest rate can save thousands of dollars across a 15–20 year home loan.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions (FAQ)</h3>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>What is the difference between flat interest and reducing balance?</span>
+                <span>What is the difference between a Reducing Balance loan and a Flat Rate loan?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                In a flat interest loan, interest is calculated on the full initial loan amount throughout the tenure. In reducing balance loans, interest is calculated each month only on the remaining unpaid principal, which significantly lowers your total interest burden.
+                In a Reducing Balance loan, interest is computed only on the outstanding principal balance each month. In a Flat Rate loan, interest is calculated on the entire original loan amount throughout the full tenure, making flat rate loans significantly more expensive in effective annual cost.
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>Does making prepayments change my EMI?</span>
+                <span>Does this calculator account for processing fees and insurance?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                Prepaying principal reduces your overall outstanding loan balance, allowing you either to shorten your loan tenure or request your lender to lower your future monthly EMI payments.
+                Our tool computes pure mathematical loan amortization. Commercial lending institutions may charge one-time loan processing fees, documentation charges, stamp duty, or mandatory loan insurance premiums that are billed separately.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How accurate is the 12-month amortization schedule preview?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                The preview table accurately computes the exact monthly breakdown between principal paid, interest paid, and remaining balance using standard mathematical amortization logic accurate to two decimal cents.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What tenure type should I choose: Years or Months?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Both options yield mathematically identical results. Choose "Years" for long-term home mortgages and education loans (e.g., 10, 15, 20 years), and "Months" for shorter consumer durable, automobile, or personal loans (e.g., 24, 36, 48 months).
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Are my financial records, income, or loan queries saved?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                No. All calculations run strictly in your client-side browser session. Smart Utility Tools never logs, tracks, or stores your loan queries or financial figures.
               </div>
             </div>
           </div>
@@ -248,7 +323,6 @@
             </a>
           </div>
         </div>
-
       </section>
 
     </div>

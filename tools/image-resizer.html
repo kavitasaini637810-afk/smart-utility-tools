@@ -25,10 +25,10 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Are my images uploaded to the cloud?",
+      "name": "Are my images uploaded to the cloud or saved on any server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. All resizing executes through your browser's HTML5 Canvas context. Your images remain private on your computer or phone."
+        "text": "No. All image resizing, canvas drawing, and format conversions take place 100% inside your web browser using HTML5 Canvas APIs. Your private photographs, family pictures, and documents never leave your device."
       }
     },
     {
@@ -36,7 +36,31 @@
       "name": "What is the maximum allowed image size?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We support files up to 25MB and dimensions up to 8,000 pixels. This safeguard prevents mobile devices and computers from running out of system memory."
+        "text": "To guarantee smooth performance on mobile devices and laptops without causing browser memory exhaustion, we support image files up to 25 MB and dimensions up to 8,000 × 8,000 pixels."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the 'Maintain Aspect Ratio' checkbox important?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aspect ratio describes the proportional relationship between an image's width and height. Keeping this locked guarantees that your subject does not look squished, unnaturally stretched, or distorted after resizing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I choose PNG, JPEG, or WebP format?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Choose WebP for the best combination of tiny file size and sharp visual quality on modern websites. Choose JPEG for standard photographs and printed documents. Choose PNG for graphics, diagrams, logos, and images containing transparency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will enlarging an image improve its visual quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enlarging a small low-resolution image (e.g. from 200px to 2000px) creates pixel interpolation. While the canvas dimensions will increase, the image may appear pixelated or blurry because the original pixel detail was not present in the source file."
       }
     }
   ]
@@ -166,38 +190,88 @@
 
       </div>
 
-      <!-- Instructions & Documentation -->
+      <!-- Documentation & Examples -->
       <section class="tool-documentation">
         <div class="doc-section">
-          <h2 class="doc-title"><span>📖</span> How to Resize Images Safely</h2>
+          <h2 class="doc-title"><span>📖</span> How to Resize Images Safely (इमेज का आकार बदलने का तरीका)</h2>
           <div class="doc-content">
+            <p>Resizing image pixel dimensions is one of the most effective ways to optimize website speed, meet job application requirements, and prepare photos for social media sharing. Follow these four simple steps:</p>
             <ol>
-              <li><strong>Upload Image:</strong> Drag any photo or click the upload area.</li>
-              <li><strong>Adjust Dimensions:</strong> Enter your desired pixel width or height. With <em>Maintain Aspect Ratio</em> enabled, the other dimension automatically computes proportionally.</li>
-              <li><strong>Choose Format:</strong> Select PNG for graphics, JPEG for standard photos, or WebP for optimized web delivery.</li>
-              <li><strong>Download:</strong> Click <em>Resize Image Now</em> followed by <em>Download Resized Image</em> to save the newly dimensioned file.</li>
+              <li><strong>Select or Drag an Image:</strong> Drag any photo from your computer or phone into the upload box, or click the area to browse your file system. Supported formats include PNG, JPEG, JPG, WebP, and BMP.</li>
+              <li><strong>Configure Dimensions:</strong> Enter your target Width or Height in pixels. With <em>Maintain Aspect Ratio</em> enabled (recommended), our tool automatically calculates the matching dimension to prevent visual distortion or stretching.</li>
+              <li><strong>Choose Output Format:</strong> Select modern <strong>WebP</strong> for optimal web speed, <strong>JPEG</strong> for photos, or <strong>PNG</strong> when transparent layers or vector sharpness must be preserved.</li>
+              <li><strong>Process &amp; Save:</strong> Click <em>Resize Image Now</em> to execute the canvas scaling, preview the dimension changes, and click <em>Download Resized Image</em> to save your file.</li>
             </ol>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>📐</span> Standard Social Media &amp; Web Image Dimensions</h3>
+          <div class="doc-content">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Platform / Usage</th>
+                    <th>Standard Recommended Dimensions</th>
+                    <th>Aspect Ratio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Instagram Square Post</strong></td>
+                    <td>1080 × 1080 px</td>
+                    <td>1:1 Square</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Instagram Portrait Post</strong></td>
+                    <td>1080 × 1350 px</td>
+                    <td>4:5 Vertical</td>
+                  </tr>
+                  <tr>
+                    <td><strong>YouTube Video Thumbnail</strong></td>
+                    <td>1280 × 720 px</td>
+                    <td>16:9 Widescreen</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Facebook / Twitter Open Graph Link</strong></td>
+                    <td>1200 × 630 px</td>
+                    <td>1.91:1 Banner</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Passport / Profile Photo</strong></td>
+                    <td>600 × 600 px (2 × 2 inches at 300 DPI)</td>
+                    <td>1:1 Square</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Website Full-Width Hero Banner</strong></td>
+                    <td>1920 × 1080 px</td>
+                    <td>16:9 Standard</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
         <div class="doc-section">
           <h3 class="doc-title"><span>💡</span> Practical Use Case</h3>
           <div class="example-box">
-            <strong>Website Banner:</strong> You take a 4032 × 3024 px photo with your phone camera (5.2 MB).<br>
-            Using the resizer to scale it down to 1200 × 900 px reduces the file size to under 300 KB, boosting webpage loading speed significantly!
+            <strong>Website Performance Scenario:</strong> A modern smartphone captures a high-resolution 4032 × 3024 pixel photograph weighing 5.8 MB.<br>
+            Using the <strong>Image Resizer</strong> to scale dimensions down to 1200 × 900 px reduces the file size to under 280 KB—speeding up webpage load times by over 90% while looking completely crisp on retina computer and mobile screens!
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions (FAQ)</h3>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>Are my images uploaded to the cloud?</span>
+                <span>Are my images uploaded to the cloud or saved on any server?</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                No. All resizing executes through your browser's HTML5 Canvas context. Your images remain private on your computer or phone.
+                No. All image resizing, canvas drawing, and format conversions take place 100% inside your web browser using HTML5 Canvas APIs. Your private photographs, family pictures, and documents never leave your device.
               </div>
             </div>
             <div class="faq-item">
@@ -206,7 +280,34 @@
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                We support files up to 25MB and dimensions up to 8,000 pixels. This safeguard prevents mobile devices and computers from running out of system memory.
+                To guarantee smooth performance on mobile devices and laptops without causing browser memory exhaustion, we support image files up to 25 MB and dimensions up to 8,000 × 8,000 pixels.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Why is the "Maintain Aspect Ratio" checkbox important?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Aspect ratio describes the proportional relationship between an image's width and height. Keeping this locked guarantees that your subject does not look squished, unnaturally stretched, or distorted after resizing.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Should I choose PNG, JPEG, or WebP format?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Choose WebP for the best combination of tiny file size and sharp visual quality on modern websites. Choose JPEG for standard photographs and printed documents. Choose PNG for graphics, diagrams, logos, and images containing transparency.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Will enlarging an image improve its visual quality?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Enlarging a small low-resolution image (e.g. from 200px to 2000px) creates pixel interpolation. While the canvas dimensions will increase, the image may appear pixelated or blurry because the original pixel detail was not present in the source file.
               </div>
             </div>
           </div>
@@ -230,7 +331,6 @@
             </a>
           </div>
         </div>
-
       </section>
 
     </div>

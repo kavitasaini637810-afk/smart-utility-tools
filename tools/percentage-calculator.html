@@ -28,15 +28,39 @@
       "name": "Can I enter decimals and negative numbers?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The calculator accepts all valid floating point numbers and decimals (e.g. 7.5%, 1240.50)."
+        "text": "Yes. Our calculator accepts all valid floating point numbers and decimals (e.g. 7.5%, 1240.50, -12.3). It supports fractional percentages commonly encountered in financial interest rates and tax brackets."
       }
     },
     {
       "@type": "Question",
-      "name": "What happens if I divide by zero?",
+      "name": "What happens if I divide by zero? (शून्य से विभाजन)",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In mathematics, division by zero is undefined. Our tool proactively detects zero denominators and displays a clear explanation instead of returning NaN or crashing."
+        "text": "In standard mathematics, division by zero is mathematically undefined. Our tool proactively detects zero denominators and provides a helpful, human-readable error message instead of returning NaN or crashing your browser session."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between percentage increase and percentage points?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Percentage increase measures relative growth proportional to the original base value. In contrast, percentage points describe the direct arithmetic subtraction between two percentages (e.g., an interest rate moving from 5% to 6% is a 1 percentage point increase, but a 20% relative percentage increase)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate a shopping discount quickly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To find a discount quickly, multiply the original price by the discount percentage divided by 100. For example, for a 20% discount on an $80 item: $80 × 0.20 = $16 discount. Subtract $16 from $80 to get the final price of $64."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my financial numbers or calculation records saved?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All computations take place strictly inside your browser's local memory. None of your entered numbers, amounts, or results are logged, stored, or transmitted to any server."
       }
     }
   ]
@@ -170,30 +194,56 @@
         </form>
       </div>
 
-      <!-- Documentation & Examples -->
+      <!-- Instructions & Documentation -->
       <section class="tool-documentation">
         <div class="doc-section">
-          <h2 class="doc-title"><span>📖</span> Understanding Percentage Formulas</h2>
+          <h2 class="doc-title"><span>📖</span> Understanding Percentage Formulas (प्रतिशत निकालने के नियम)</h2>
           <div class="doc-content">
+            <p>Percentages are fundamental to financial planning, educational grading, commercial markups, and everyday shopping discounts. Our calculator provides four dedicated mathematical models:</p>
             <ul>
-              <li><strong>Find X% of Y:</strong> Multiplies the total value $Y$ by the percentage divided by 100: $\text{Result} = (X / 100) \times Y$.</li>
-              <li><strong>What % is X of Y:</strong> Compares part $X$ against whole $Y$: $\text{Percentage} = (X / Y) \times 100$. (Note: $Y$ cannot be zero).</li>
-              <li><strong>Percentage Change:</strong> Computes the difference divided by the initial value: $\text{Change} = ((Y - X) / |X|) \times 100$.</li>
+              <li><strong>1. Calculate X% of Y (सीधा प्रतिशत):</strong> Finds the portion corresponding to a percentage of a given number.<br>
+                <code>Formula: Result = (X ÷ 100) × Y</code><br>
+                <em>Example:</em> What is 15% of $80? $(15 div 100) 	imes 80 = mathbf{$12}$.
+              </li>
+              <li><strong>2. What Percentage is X of Y? (हिस्सा प्रतिशत):</strong> Determines the proportional ratio of one number compared to another.<br>
+                <code>Formula: Percentage = (X ÷ Y) × 100</code><br>
+                <em>Example:</em> You scored 45 marks out of 60 on a test. $(45 div 60) 	imes 100 = mathbf{75%}$.
+              </li>
+              <li><strong>3. Percentage Increase / Growth (प्रतिशत वृद्धि):</strong> Measures the rate at which an initial value has grown to a higher number.<br>
+                <code>Formula: Increase % = [(New Value - Original Value) ÷ Original Value] × 100</code><br>
+                <em>Example:</em> Stock price rose from $50 to $65. $[(65 - 50) div 50] 	imes 100 = mathbf{30% 	ext{ growth}}$.
+              </li>
+              <li><strong>4. Percentage Decrease / Discount (प्रतिशत छूट / कमी):</strong> Measures the rate of reduction from an original higher number to a lower discounted number.<br>
+                <code>Formula: Decrease % = [(Original Value - New Value) ÷ Original Value] × 100</code><br>
+                <em>Example:</em> A shirt originally priced at $120 is on sale for $90. $[(120 - 90) div 120] 	imes 100 = mathbf{25% 	ext{ discount}}$.
+              </li>
             </ul>
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>💡</span> Practical Example</h3>
-          <div class="example-box">
-            <strong>Shopping Discount Scenario:</strong> A jacket normally priced at $120 is on sale for $90.<br>
-            Using <strong>Percentage Decrease</strong> (Original = 120, Discounted = 90):<br>
-            $\text{Difference} = 120 - 90 = 30$. Formula: $(30 \div 120) \times 100 = \mathbf{25\% \text{ off}}$.
+          <h3 class="doc-title"><span>🛒</span> Everyday Real-World Applications</h3>
+          <div class="doc-content">
+            <p>Percentage calculations are essential across personal finance, education, and business:</p>
+            <ul>
+              <li><strong>Retail Shopping &amp; Seasonal Sales:</strong> Determine final sale prices and verify store discounts during clearance promotions.</li>
+              <li><strong>Academic Marks &amp; Examinations:</strong> Easily calculate overall percentages, GPA weights, and test scores for school, college, and competitive entrance exams.</li>
+              <li><strong>Salary Appraisals &amp; Annual Hikes:</strong> Verify your salary increment percentage by comparing previous compensation against revised compensation packages.</li>
+              <li><strong>Business Margins &amp; ROI:</strong> Analyze gross profit margins, return on investment (ROI), sales revenue quarterly growth, and supplier discount margins.</li>
+            </ul>
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <h3 class="doc-title"><span>💡</span> Practical Calculation Example</h3>
+          <div class="example-box">
+            <strong>Retail Discount Scenario:</strong> A jacket has an original price tag of $120, marked down to $90.<br>
+            Using <strong>Percentage Decrease</strong>: Difference = $120 - $90 = $30. Formula: $(30 div 120) 	imes 100 = mathbf{25% 	ext{ off}}$. You save $30 (25%) on the purchase!
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions (FAQ)</h3>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
@@ -201,16 +251,43 @@
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                Yes. The calculator accepts all valid floating point numbers and decimals (e.g. 7.5%, 1240.50).
+                Yes. Our calculator accepts all valid floating point numbers and decimals (e.g. 7.5%, 1240.50, -12.3). It supports fractional percentages commonly encountered in financial interest rates and tax brackets.
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                <span>What happens if I divide by zero?</span>
+                <span>What happens if I divide by zero? (शून्य से विभाजन)</span>
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                In mathematics, division by zero is undefined. Our tool proactively detects zero denominators and displays a clear explanation instead of returning NaN or crashing.
+                In standard mathematics, division by zero is mathematically undefined. Our tool proactively detects zero denominators and provides a helpful, human-readable error message instead of returning NaN or crashing your browser session.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What is the difference between percentage increase and percentage points?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Percentage increase measures relative growth proportional to the original base value. In contrast, percentage points describe the direct arithmetic subtraction between two percentages (e.g., an interest rate moving from 5% to 6% is a 1 percentage point increase, but a 20% relative percentage increase).
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How do I calculate a shopping discount quickly?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                To find a discount quickly, multiply the original price by the discount percentage divided by 100. For example, for a 20% discount on an $80 item: $80 × 0.20 = $16 discount. Subtract $16 from $80 to get the final price of $64.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Are my financial numbers or calculation records saved?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                No. All computations take place strictly inside your browser's local memory. None of your entered numbers, amounts, or results are logged, stored, or transmitted to any server.
               </div>
             </div>
           </div>
@@ -234,7 +311,6 @@
             </a>
           </div>
         </div>
-
       </section>
 
     </div>

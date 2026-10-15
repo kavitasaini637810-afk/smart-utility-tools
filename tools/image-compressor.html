@@ -28,7 +28,15 @@
       "name": "Why did my file size increase after compression?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "If the original image was already saved at a low quality (e.g. 50%), re-encoding it at 85% causes the browser encoder to store additional compression artifacts, increasing byte size. Try lowering the quality slider to 40-50% or switching between JPEG and WebP."
+        "text": "If the original image was already saved at a low quality setting (e.g. 50%), attempting to re-encode it at 85% causes the browser encoder to store additional artifact blocks, resulting in a larger file. To fix this, lower the quality slider to 40%–50% or switch from PNG to WebP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the recommended quality setting for everyday web photos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A quality setting between 75% and 85% offers the optimal sweet spot for website banners, e-commerce product photos, and blog images, providing massive byte savings with zero visible degradation."
       }
     },
     {
@@ -36,7 +44,23 @@
       "name": "Does this tool support WebP transparency?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. If you choose WebP format, transparency layers are preserved. For JPEG format, transparent areas are cleanly filled with a solid white background."
+        "text": "Yes. If you choose WebP format, alpha transparency channels are preserved. For JPEG format, transparent areas are cleanly rendered over a solid white background."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my confidential pictures or documents safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely safe. All compression computations occur locally on your machine via client-side canvas buffers. None of your photos, medical scans, or IDs are ever uploaded to any cloud server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What image formats can I upload and compress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can upload PNG, JPEG, JPG, WebP, GIF (static frame), and BMP files. Output files can be exported into optimized WebP, JPEG, or PNG formats."
       }
     }
   ]
@@ -162,13 +186,26 @@
       <!-- Documentation & Examples -->
       <section class="tool-documentation">
         <div class="doc-section">
-          <h2 class="doc-title"><span>📖</span> How Image Compression Works</h2>
+          <h2 class="doc-title"><span>📖</span> How Image Compression Works (इमेज साइज कम करने का तरीका)</h2>
           <div class="doc-content">
-            <p>Our tool utilizes client-side lossy encoding via the standard HTML5 Canvas <code>toBlob()</code> API:</p>
+            <p>Image compression reduces the digital storage size of your photographs while retaining maximum perceptible visual clarity. Our browser-based compressor applies intelligent encoding algorithms:</p>
             <ul>
-              <li><strong>Lossy Encoding:</strong> High-frequency pixel variations invisible to the naked eye are discarded to reduce byte storage.</li>
-              <li><strong>Format Conversion:</strong> Converting uncompressed PNG images containing photographs to WebP or JPEG regularly yields over 80% file size reduction.</li>
-              <li><strong>Honest Size Reporting:</strong> If an uploaded image is already heavily compressed, re-compressing at a higher quality setting may increase file size. Our tool never fakes compression results and alerts you honestly if file size does not decrease.</li>
+              <li><strong>Interactive Quality Slider (0% – 100%):</strong> Provides continuous control over compression strength. A setting of <strong>75% – 85%</strong> typically reduces file weight by 60% – 80% without noticeable visual degradation.</li>
+              <li><strong>Modern WebP &amp; JPEG Compression:</strong> WebP utilizes predictive coding to achieve superior compression ratios compared to legacy PNG and JPEG formats.</li>
+              <li><strong>Lossy vs Lossless Optimization:</strong> Lossy compression gently discards invisible high-frequency color variations that the human eye cannot discern, freeing up megabytes of disk space.</li>
+              <li><strong>Honest Byte Reporting:</strong> If an uploaded image was already heavily compressed by another utility, re-compressing at high quality can occasionally increase byte weight. Our tool never fakes compression metrics and alerts you honestly if file size did not decrease.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section">
+          <h3 class="doc-title"><span>⚡</span> Web Performance &amp; Core Web Vitals (SEO Impact)</h3>
+          <div class="doc-content">
+            <p>Image weight is the single largest contributor to slow web page speeds across the internet. Compressing images delivers immediate performance benefits:</p>
+            <ul>
+              <li><strong>Faster Largest Contentful Paint (LCP):</strong> Optimizing hero images and banners ensures your main website content loads in under 2.5 seconds, meeting Google's Core Web Vitals threshold.</li>
+              <li><strong>Reduced Mobile Bandwidth Consumption:</strong> Saves mobile cellular data for your site visitors, improving bounce rates and session duration.</li>
+              <li><strong>Email Attachment Compliance:</strong> Email providers (like Gmail, Outlook, and Yahoo) restrict attachment sizes to 20–25 MB. Compressing multi-megabyte photos allows easy sending without cloud drive links.</li>
             </ul>
           </div>
         </div>
@@ -176,13 +213,13 @@
         <div class="doc-section">
           <h3 class="doc-title"><span>💡</span> Practical Use Case</h3>
           <div class="example-box">
-            <strong>Email Attachment Scenario:</strong> Your email client limits attachments to 2MB, but your scanned photo is 4.5MB.<br>
-            Using <strong>Image Compressor</strong> at 80% quality reduces the file size to 850 KB with crisp visual readability!
+            <strong>Government Job / Passport Application:</strong> An official application portal mandates that your photograph must be under 200 KB, but your original scan is 3.4 MB.<br>
+            Using <strong>Image Compressor</strong> with the quality slider set to 80% reduces the file size to 165 KB in seconds, perfectly satisfying the portal's upload restrictions!
           </div>
         </div>
 
         <div class="doc-section">
-          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions</h3>
+          <h3 class="doc-title"><span>❓</span> Frequently Asked Questions (FAQ)</h3>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
@@ -190,7 +227,16 @@
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                If the original image was already saved at a low quality (e.g. 50%), re-encoding it at 85% causes the browser encoder to store additional compression artifacts, increasing byte size. Try lowering the quality slider to 40-50% or switching between JPEG and WebP.
+                If the original image was already saved at a low quality setting (e.g. 50%), attempting to re-encode it at 85% causes the browser encoder to store additional artifact blocks, resulting in a larger file. To fix this, lower the quality slider to 40%–50% or switch from PNG to WebP.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What is the recommended quality setting for everyday web photos?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                A quality setting between <strong>75% and 85%</strong> offers the optimal sweet spot for website banners, e-commerce product photos, and blog images, providing massive byte savings with zero visible degradation.
               </div>
             </div>
             <div class="faq-item">
@@ -199,7 +245,25 @@
                 <span class="faq-icon">▼</span>
               </button>
               <div class="faq-answer">
-                Yes. If you choose WebP format, transparency layers are preserved. For JPEG format, transparent areas are cleanly filled with a solid white background.
+                Yes. If you choose WebP format, alpha transparency channels are preserved. For JPEG format, transparent areas are cleanly rendered over a solid white background.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Are my confidential pictures or documents safe?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Yes, completely safe. All compression computations occur locally on your machine via client-side canvas buffers. None of your photos, medical scans, or IDs are ever uploaded to any cloud server.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What image formats can I upload and compress?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                You can upload PNG, JPEG, JPG, WebP, GIF (static frame), and BMP files. Output files can be exported into optimized WebP, JPEG, or PNG formats.
               </div>
             </div>
           </div>
@@ -223,7 +287,6 @@
             </a>
           </div>
         </div>
-
       </section>
 
     </div>
